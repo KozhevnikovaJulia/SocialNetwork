@@ -1,26 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import {Route, BrowserRouter} from "react-router-dom";
+import {StatePropsType} from "./State/State";
+import {NavBur} from "./components/NavBur/NavBur";
+import { Header } from "./components/Header/Header";
+import { Profile } from "./components/Profile/Profile";
+import {Dialogs} from "./components/Dialogs/Dialogs";
 
-function App() {
+type AppPropsType = {
+  state: StatePropsType
+  addPost:()=> void
+  changePost:(postMessage:string)=> void
+}
+
+function App(props:AppPropsType) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <BrowserRouter>
+        <div className="app-wrapper">
+          <Header/>
+          <NavBur/>
+          <div className="app-wrapper-content">
+            <Route path= "/profile" render={ () =>
+                <Profile posts={props.state.profilePage.posts}
+                         newPostText={props.state.profilePage.newPostText}
+                         addPost={props.addPost}
+                         changePost={props.changePost}/>} />
+            <Route path= "/dialogs" render={ () =>
+                <Dialogs dialogs={props.state.dialogsPage.dialogs} messages={props.state.dialogsPage.messages} />}/>
+          </div>
+        </div>
+      </BrowserRouter>
   );
 }
 
-export default App;
+export default App

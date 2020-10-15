@@ -1,0 +1,13 @@
+.dialogsContant {
+    display: grid;
+    grid-template-columns: 4fr 8fr;
+
+}
+.dialogs {
+    padding: 20px;
+
+
+}
+.messages {
+    padding: 20px;
+}
