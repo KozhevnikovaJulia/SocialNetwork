@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./Profile.module.css";
 import {MyPosts} from "./MyPosts/MyPosts";
-import { PostsPropsType } from "../../State/State";
+import { PostsPropsType, ActionTypes } from "../../State/State";
 
 
 
@@ -9,8 +9,7 @@ import { PostsPropsType } from "../../State/State";
 type ProfilePropsType = {
     posts:Array<PostsPropsType>
     newPostText: string
-    addPost:()=> void
-    changePost:(postMessage:string)=>void
+    dispatch: (action: ActionTypes ) => void
 }
 
 export function Profile(props:ProfilePropsType) {
@@ -21,7 +20,7 @@ export function Profile(props:ProfilePropsType) {
                 <img src="https://pbs.twimg.com/media/DyA2gApW0AE3IIK.jpg:large"/>
                 ava
             </div>
-            <MyPosts posts={props.posts} newPostText={props.newPostText} addPost={props.addPost} changePost={props.changePost}/>
+            <MyPosts posts={props.posts} newPostText={props.newPostText} dispatch={props.dispatch} />
         </div>
 
 
