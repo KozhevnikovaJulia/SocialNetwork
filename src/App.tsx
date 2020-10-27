@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import {Route, BrowserRouter} from "react-router-dom";
-import {StatePropsType, ActionTypes} from "./State/State";
+import {StatePropsType, ActionTypes} from "./redux/State";
 import {NavBur} from "./components/NavBur/NavBur";
 import { Header } from "./components/Header/Header";
 import { Profile } from "./components/Profile/Profile";
@@ -26,6 +26,7 @@ function App(props:AppPropsType) {
           <Route path="/dialogs" render={() =>
             <Dialogs dialogs={props.state.dialogsPage.dialogs}
                      messages={props.state.dialogsPage.messages} 
+                     newMessageText={props.state.dialogsPage.newMessageText}
                      dispatch={props.dispatch}/>} />
         </div>
         </div>

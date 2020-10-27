@@ -79,7 +79,7 @@ export type ProfilePagePropsType ={
     posts: Array<PostsPropsType>
     newPostText: string
 }
-type DialogsPagePropsType ={
+export type DialogsPagePropsType ={
     dialogs:Array<DialogArrayPropsType>
     messages: Array<MessagesPropsType>
     newMessageText: string
