@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import {Route, BrowserRouter} from "react-router-dom";
-import {StatePropsType, ActionTypes} from "./redux/State";
+import {StatePropsType, ActionTypes} from "./redux/Store";
 import {NavBur} from "./components/NavBur/NavBur";
 import { Header } from "./components/Header/Header";
 import { Profile } from "./components/Profile/Profile";

@@ -88,6 +88,7 @@ export type StatePropsType = {
     profilePage:ProfilePagePropsType
     dialogsPage:DialogsPagePropsType
 }
+
 type StoreType = {
     _state:StatePropsType
     getState: () => StatePropsType
@@ -97,6 +98,8 @@ type StoreType = {
     subscriber:(observer:()=> void) => void
     dispatch: (action: ActionTypes ) => void
 }
+
+
 export type ActionTypes = AddPostActionType | ChangePostActionType | SendMessageActionType | ChangeMessageActionType
 type AddPostActionType = {
 type:"ADD-POST"

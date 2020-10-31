@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./Profile.module.css";
 import {MyPosts} from "./MyPosts/MyPosts";
-import { PostsPropsType, ActionTypes } from "../../redux/State";
+import { PostsPropsType, ActionTypes } from "../../redux/Store";
 
 
 
