@@ -3,7 +3,7 @@ import style from "./Profile.module.css";
 import {MyPostsContainer} from "./MyPosts/MyPostsContainer";
 
 type ProfilePropsType = {
-    store: any
+    // store: any
 }
 
 export function Profile(props:ProfilePropsType) {
@@ -14,7 +14,7 @@ export function Profile(props:ProfilePropsType) {
                 <img src="https://pbs.twimg.com/media/DyA2gApW0AE3IIK.jpg:large"/>
                 ava
             </div>
-            <MyPostsContainer store={props.store} />
+            <MyPostsContainer />
         </div>
 
 

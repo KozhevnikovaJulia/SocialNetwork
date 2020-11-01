@@ -11,4 +11,9 @@ let redusers = combineReducers (
     }
 )
 
+type RedusersType = typeof redusers
+type AppStateType = ReturnType<RedusersType>
+let state:AppStateType;
+
 export let store = createStore (redusers)
+// @ts-ignore

@@ -8,9 +8,7 @@ import { Profile } from "./components/Profile/Profile";
 import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
 
 type AppPropsType = {
-  // state: StatePropsType
-  // dispatch: (action: ActionTypes ) => void
-  store: any
+  //  store: any
 }
 
 function App(props:AppPropsType) {
@@ -21,19 +19,9 @@ function App(props:AppPropsType) {
         <NavBur />
         <div className="app-wrapper-content">
           <Route path="/profile" render={() =>
-            <Profile store={props.store}
-                    //  posts={props.state.profilePage.posts}
-                    //  newPostText={props.state.profilePage.newPostText}
-                    //  dispatch={props.dispatch} 
-                     />} />
+            <Profile />} />
           <Route path="/dialogs" render={() =>
-            <DialogsContainer store={props.store}
-                    //  dialogs={props.state.dialogsPage.dialogs}
-                    //  messages={props.state.dialogsPage.messages} 
-                    //  newMessageText={props.state.dialogsPage.newMessageText}
-                    //  dispatch={props.dispatch}
-                     
-                     />} />
+            <DialogsContainer  />} />
         </div>
         </div>
       </BrowserRouter>

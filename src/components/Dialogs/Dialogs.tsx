@@ -5,11 +5,6 @@ import {Message} from "./Message/Message";
 import {MessagesPropsType, DialogArrayPropsType,ActionTypes, sendMessageActionCreator,changeMessageActionCreator} from "../../redux/Store";
 
 type DialogsPropsType = {
-    // dialogs: Array<DialogArrayPropsType>
-    // messages: Array<MessagesPropsType>
-    // newMessageText: string
-    // dispatch: (action: ActionTypes ) => void
-    
     sendMessage: ()=> void
     changeMessage: (messageText:string)=> void
     newMessageText: string
