@@ -26,11 +26,7 @@ type DialogArrayType = {
     id: number
     name: string
 }
-// type InitialStateType = {
-//     dialogs:Array<DialogArrayPropsType>
-//     messages: Array<MessagesPropsType>
-//     newMessageText: string
-// }
+
 type InitialStateType = typeof initialState
 
 let initialState  = {
@@ -48,14 +44,22 @@ let initialState  = {
 }
 
 export const dialogsReducer = (state = initialState, action: ActionTypes): InitialStateType => {
-    if (action.type === SEND_MESSAGE) {
-        let newMessage = { id: 6, textMessage: state.newMessageText };
-        state.messages.push(newMessage);
-        state.newMessageText = "";
-
-    } else if (action.type === CHANGE_MESSAGE) {
-        state.newMessageText = action.messageText;
+    switch (action.type) {
+        case SEND_MESSAGE: {
+            let newMessage = { id: 6, textMessage: state.newMessageText }
+            let stateCopy = { ...state }
+            stateCopy.messages = [...state.messages]
+        stateCopy.messages.push(newMessage)
+        stateCopy.newMessageText = ""
+            return stateCopy
+        }
+         case CHANGE_MESSAGE: {
+            let stateCopy = {...state}
+            stateCopy.newMessageText = action.messageText
+            return stateCopy
+         }
+    
+        default: return state
     }
-
-    return state;
+    
 }
