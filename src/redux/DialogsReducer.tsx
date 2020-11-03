@@ -47,8 +47,10 @@ export const dialogsReducer = (state = initialState, action: ActionTypes): Initi
     switch (action.type) {
         case SEND_MESSAGE: {
             let newMessage = { id: 6, textMessage: state.newMessageText }
-            let stateCopy = { ...state }
-            stateCopy.messages = [...state.messages]
+
+            let stateCopy = { ...state,
+            messages: [...state.messages] }
+            
         stateCopy.messages.push(newMessage)
         stateCopy.newMessageText = ""
             return stateCopy
@@ -63,3 +65,5 @@ export const dialogsReducer = (state = initialState, action: ActionTypes): Initi
     }
     
 }
+export const sendMessageActionCreator = (): ActionTypes  => ({type: "SEND-MESSAGE"})
+export const changeMessageActionCreator = (messageText: string): ActionTypes  => ({type: "CHANGE-MESSAGE", messageText })

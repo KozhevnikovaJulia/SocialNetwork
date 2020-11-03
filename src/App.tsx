@@ -6,6 +6,7 @@ import {NavBur} from "./components/NavBur/NavBur";
 import { Header } from "./components/Header/Header";
 import { Profile } from "./components/Profile/Profile";
 import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
+import {UsersContainer} from "./components/Users/UsersContainer";
 
 type AppPropsType = {
   //  store: any
@@ -21,7 +22,9 @@ function App(props:AppPropsType) {
           <Route path="/profile" render={() =>
             <Profile />} />
           <Route path="/dialogs" render={() =>
-            <DialogsContainer  />} />
+            <DialogsContainer />} />
+          <Route path="/users" render={() =>
+            <UsersContainer />} />
         </div>
         </div>
       </BrowserRouter>

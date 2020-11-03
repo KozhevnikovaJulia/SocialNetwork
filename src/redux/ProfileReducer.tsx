@@ -56,3 +56,5 @@ export const profileReducer = (state= initialState, action: ActionTypes): Initia
         default: return state
     }
 }
+export const addPostActionCreator = (): ActionTypes  => ({type: "ADD-POST"})
+export const changePostActionCreator = (postMessage: string): ActionTypes  => ({type: "CHANGE-POST", postMessage })

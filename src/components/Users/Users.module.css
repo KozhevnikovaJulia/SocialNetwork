@@ -1,0 +1,19 @@
+.users {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+    margin: 20px;
+}
+.userAvatar {
+    padding: 20px;
+
+}
+.userAvatar img {
+   border-radius: 70px;
+   width: 100px;
+   height: 100px;
+
+}
+.userInfo {
+    padding: 20px;
+    border: grey 1px solid;
+}

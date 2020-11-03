@@ -13,6 +13,9 @@ export function NavBur() {
           <NavLink to="/dialogs" activeClassName={style.active}>Dialogs</NavLink>
         </div>
         <div className={style.item}>
+          <NavLink to="/users" activeClassName={style.active}>Users</NavLink>
+        </div>
+        <div className={style.item}>
           <NavLink to="/news" activeClassName={style.active}>News</NavLink>
         </div>
         <div className={style.item}>
