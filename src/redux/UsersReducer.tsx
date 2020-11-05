@@ -28,10 +28,10 @@ type InitialStateType = typeof initialState
 
 let initialState = {
     users: [
-        { id: 1, avatarUserUrl:"https://images.pexels.com/photos/789303/pexels-photo-789303.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", followed: true, fullName: "Julia", status: "I am a student", location: {city: "Moscow", country: "Russia"} },
-        { id: 2, avatarUserUrl:"https://images.pexels.com/photos/792725/pexels-photo-792725.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", followed: false, fullName: "Alisa", status: "I am a child", location: {city: "Moscow", country: "Russia"} },
-        { id: 3, avatarUserUrl:"https://images.pexels.com/photos/2182999/pexels-photo-2182999.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", followed: true, fullName: "Alina", status: "I am a child", location: {city: "Moscow", country: "Russia"} },
-        { id: 4, avatarUserUrl:"https://images.pexels.com/photos/428328/pexels-photo-428328.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", followed: true, fullName: "Bob", status: "I am a Bob", location: {city: "Moscow", country: "Russia"} },
+        { id: 1, avatarUserUrl:"https://images.pexels.com/photos/789303/pexels-photo-789303.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", followed: true, fullName: "Julia Kozhevnikova", status: "I am a student", location: {city: "Moscow", country: "Russia"} },
+        { id: 2, avatarUserUrl:"https://images.pexels.com/photos/792725/pexels-photo-792725.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", followed: false, fullName: "Alisa Kozhevnikova", status: "I am a child", location: {city: "Moscow", country: "Russia"} },
+        { id: 3, avatarUserUrl:"https://images.pexels.com/photos/2182999/pexels-photo-2182999.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", followed: true, fullName: "Alina Kozhevnikova", status: "I am a child", location: {city: "Moscow", country: "Russia"} },
+        { id: 4, avatarUserUrl:"https://images.pexels.com/photos/428328/pexels-photo-428328.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", followed: true, fullName: "Bob Bush", status: "I am a Bob", location: {city: "Moscow", country: "Russia"} },
     ] as Array<UserType>
    }
 

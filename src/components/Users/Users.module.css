@@ -14,6 +14,22 @@
 
 }
 .userInfo {
+    position: relative;
     padding: 20px;
-    border: grey 1px solid;
+    border:  #ff4f81 2px solid;
+    font-size: large;
+    
+}
+.userInfo h3 {
+    color: #ff4f81  ;
+}
+.city {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+}
+.country {
+    position: absolute;
+    top: 50px;
+    right: 25px;
 }

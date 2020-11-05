@@ -18,7 +18,9 @@ export function Users(props: UsersPropsType) {
                         <button onClick={() => { props.follow(u.id) }}>Follow</button>} </div>
                 </div>
                 <div className={style.userInfo}>
-                    <div>{u.fullName}{u.location.city}{u.location.country}</div>
+                    <h3>{u.fullName}</h3>
+                    <div className={style.city}>{u.location.city}</div>
+                    <div className={style.country}>{u.location.country}</div>
                     <div>{u.status}</div>
                 </div>
             </div>
