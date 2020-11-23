@@ -1,10 +1,16 @@
 import {Users} from "./Users";
-import {followActionCreator, unfollowActionCreator, setUsersActionCreator, UserType} from "../../redux/UsersReducer";
+import {followActionCreator, unfollowActionCreator, setUsersActionCreator, setCurrentPageActionCreator, 
+     UserType, setUsersTotalCountActionCreator, toggleIsFetchingActionCreator} from "../../redux/UsersReducer";
 import {connect} from "react-redux";
+import { UsersAPIContainer } from "./UsersAPIContainer";
 
 let mapStateToProps = (state: any) => {
     return {
-        users: state.usersPage.users        
+        users: state.usersPage.users,
+        pageSize: state.usersPage.pageSize,
+        usersTotalCount: state.usersPage.usersTotalCount,
+        currentPage: state.usersPage.currentPage,    
+        isFetching: state.usersPage.isFetching    
     }
 }
 let mapDispatchToProps = (dispatch: Function) => {
@@ -18,6 +24,16 @@ let mapDispatchToProps = (dispatch: Function) => {
         setUsers:  (users: Array<UserType >) => {
             dispatch(setUsersActionCreator(users))
         },
+        setCurrentPage: (currentPage: number) => {
+            dispatch(setCurrentPageActionCreator(currentPage))
+        },
+        setUsersTotalCount: (usersTotalCount: number) => {
+            dispatch(setUsersTotalCountActionCreator(usersTotalCount))
+        },
+        toggleIsFetching: (isFetching: boolean) => {
+            dispatch(toggleIsFetchingActionCreator(isFetching))
+        },
+        
     }
 }
-export const UsersContainer = connect (mapStateToProps,mapDispatchToProps )(Users)
+export const UsersContainer = connect (mapStateToProps,mapDispatchToProps )(UsersAPIContainer)

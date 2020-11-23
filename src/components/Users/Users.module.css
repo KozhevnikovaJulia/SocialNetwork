@@ -33,3 +33,6 @@
     top: 50px;
     right: 25px;
 }
+.selectedPage {
+    font-weight: bold;
+}
