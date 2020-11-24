@@ -18,8 +18,7 @@ type UsersPropsType = {
 //     ceil(x: number): number;
 // }
 
-export function Users(props: UsersPropsType) {
-    debugger
+export function Users(props: UsersPropsType) {   
    
     let pageCount: number = Math.ceil(props.usersTotalCount / props.pageSize) // Math.сeil округляет число в большую сторону
     let pages: Array<number> = []
@@ -38,7 +37,8 @@ export function Users(props: UsersPropsType) {
         {props.users.map(u => <div key={u.id} className={style.users} >
             <div className={style.userAvatar}>
                 <NavLink to= {"/profile/" + u.id}>
-                    <img src={u.uniqueUrlName ? u.uniqueUrlName : userPhoto} />
+                    {/* <img src={u.uniqueUrlName ? u.uniqueUrlName : userPhoto} /> */}
+                    <img src={u.photos.small !=null ? u.photos.small : userPhoto} />
                 </NavLink>
                
                 <div>{u.followed ?
