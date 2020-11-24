@@ -7,7 +7,7 @@ type ProfilePropsType = {
     // posts: Array<PostsType>
     // newPostText: string
     profile: any
-    setUserProfile: (profile: any) => void
+    // setUserProfile: (profile: any) => void
 }
 
 export function Profile(props:ProfilePropsType) {      
