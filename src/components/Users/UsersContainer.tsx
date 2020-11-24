@@ -1,5 +1,5 @@
 import {Users} from "./Users";
-import {follow, unfollow, setUsers, setCurrentPage, setUsersTotalCount, toggleIsFetching} from "../../redux/UsersReducer";
+import {follow, unfollow, setUsers, setCurrentPage, setUsersTotalCount, toggleIsFetching } from "../../redux/UsersReducer";
 import {connect} from "react-redux";
 import { UsersAPIContainer } from "./UsersAPIContainer";
 
@@ -36,5 +36,5 @@ let mapStateToProps = (state: any) => {
 //     }
 // }
 export const UsersContainer = connect (mapStateToProps,
-     { follow, unfollow, setUsers, setCurrentPage, setUsersTotalCount,  toggleIsFetching } )
+    { follow, unfollow, setUsers, setCurrentPage, setUsersTotalCount,  toggleIsFetching } )
      (UsersAPIContainer)

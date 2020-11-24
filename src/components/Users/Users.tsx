@@ -2,6 +2,7 @@ import React, { ChangeEvent } from "react";
 import style from "./Users.module.css";
 import { UserType } from "../../redux/UsersReducer";
 import userPhoto from "../../images/iconfinder_user_male4_172628.png";
+import { NavLink } from "react-router-dom";
 
 
 type UsersPropsType = {
@@ -36,7 +37,10 @@ export function Users(props: UsersPropsType) {
         }
         {props.users.map(u => <div key={u.id} className={style.users} >
             <div className={style.userAvatar}>
-                <div><img src={u.uniqueUrlName ? u.uniqueUrlName : userPhoto} /></div>
+                <NavLink to= {"/profile/" + u.id}>
+                    <img src={u.uniqueUrlName ? u.uniqueUrlName : userPhoto} />
+                </NavLink>
+               
                 <div>{u.followed ?
                     <button onClick={() => { props.unfollow(u.id) }}>Unfollow</button> :
                     <button onClick={() => { props.follow(u.id) }}>Follow</button>} </div>

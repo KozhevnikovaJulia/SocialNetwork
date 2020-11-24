@@ -10,8 +10,7 @@ type MyPostsPropsType = {
  newPostText: string
 }
 
-export function MyPosts(props:MyPostsPropsType  ) {
-  debugger
+export function MyPosts(props:MyPostsPropsType  ) {  
   let PostElements = props.posts.map ((post:PostsPropsType) => 
   <Post message={post.message} likesCount={post.likesCount} id={post.id} />)
 
