@@ -1,12 +1,14 @@
 .navBur {
   grid-area: navbur;
-  background-color: #ff4f81;
+  /* background-color: #ff4f81; */
+  background-color: rgb(200, 200, 200);
   padding: 20px;
   font-size: x-large;
   font-weight: bold;
 }
 .item a {
   text-decoration: none;
+  /* color:rgb(200, 200, 200); */
   color: black;
 }
 .item a.active {

@@ -2,10 +2,8 @@
 
 }
 .profileContant img {
-  height: 400px;
+  width: 100%;
 }
 .ava img{
-  width: 150px;
-  height: 200px;
-  margin: 10px;
+  width: 30%; 
 }

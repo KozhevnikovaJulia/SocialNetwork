@@ -1,5 +1,6 @@
 .app-wrapper {
-    width: 1200px;
+    min-height: 100vh;
+    min-width: 100vh;
     margin: 0 auto;
     display: grid;
     grid-template-areas:
@@ -8,9 +9,10 @@
 
     grid-template-rows: 60px 1fr;
     grid-template-columns: 2fr 10fr;
-    grid-gap: 2vw;
+    /* grid-gap: 1vw; */
 }
 .app-wrapper-content {
     grid-area: contant;
-    background-color: #87cefa;
+    background-color:rgb(200, 200, 200)
+    /* background-color: #87cefa; */
 }
