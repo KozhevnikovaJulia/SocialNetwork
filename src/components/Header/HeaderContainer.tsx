@@ -29,10 +29,11 @@ import style from './Header.module.css';
 
 export class HeaderContainer extends React.Component<PropsFromRedux> {
     componentDidMount = () => {
-       
-        Axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, { withCredentials: true }).then(response => {
+       debugger
+        Axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, { withCredentials: true }).then(response => {            
             if (response.data.resultCode === 0) {
-                this.props.setUserData(response.data.data.login)                
+                let {id, email, login} = response.data.data
+                this.props.setUserData(id, email, login)                
             }
         })
     }  
@@ -53,9 +54,10 @@ let mapStateToProps = (state: AppStateType) => {
     return {
         // auth: state.auth
 
-        id: state.auth.id,
-        email: state.auth.email,
-        login: state.auth.login
+        // id: state.auth.id,
+        // email: state.auth.email,
+        login: state.auth.login,
+        isAuth: state.auth.isAuth
 
     //     id: state.auth.data.id,
     //     email: state.auth.data.email,

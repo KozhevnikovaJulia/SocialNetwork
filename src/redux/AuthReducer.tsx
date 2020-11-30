@@ -17,21 +17,25 @@ type InitialStateType = {
     id: number | null
     email: string | null    
    login: string | null
+   isAuth: boolean
 }
 
 
 let initialState: InitialStateType = {
     id: null,
     email: null,    
-   login: null,
+   login: "Julia",
+   isAuth: false
 }
 
 export const authReducer = (state= initialState, action: ActionTypes): InitialStateType => {
     
     switch (action.type) {
+        
         case SET_USER_DATA: {
            let stateCopy = { ...state,
-        ...action.data }          
+        ...action.data }    
+        stateCopy.isAuth = true      
       
            return stateCopy
         }            
@@ -39,4 +43,4 @@ export const authReducer = (state= initialState, action: ActionTypes): InitialSt
     }
 }
 
-export const setUserData = ( data:DataType): ActionTypes  => ({type: SET_USER_DATA, data})
+export const setUserData = ( id: number, email:string, login: string): ActionTypes  => ({type: SET_USER_DATA, data: {id, email, login}})
