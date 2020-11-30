@@ -2,6 +2,7 @@ import { combineReducers, createStore } from "redux";
 import {profileReducer} from "./ProfileReducer";
 import {dialogsReducer} from "./DialogsReducer";
 import { usersReducer } from "./UsersReducer";
+import { authReducer } from "./AuthReducer";
 
 // export const addPostActionCreator = (): ActionTypes  => ({type: "ADD-POST"})
 // export const changePostActionCreator = (postMessage: string): ActionTypes  => ({type: "CHANGE-POST", postMessage })
@@ -13,7 +14,8 @@ let redusers = combineReducers (
     {
         profilePage: profileReducer,
         dialogsPage: dialogsReducer,
-        usersPage: usersReducer
+        usersPage: usersReducer,
+        auth: authReducer
     }
 )
 

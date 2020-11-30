@@ -7,9 +7,10 @@
     "header header"
     "navbur contant";
 
-    grid-template-rows: 60px 1fr;
-    grid-template-columns: 2fr 10fr;
-    /* grid-gap: 1vw; */
+    grid-template-rows: 20%px 1fr;
+    grid-template-columns: 20% 1fr;
+    grid-gap: 1vw;
+    background-color: #e4002b
 }
 .app-wrapper-content {
     grid-area: contant;
