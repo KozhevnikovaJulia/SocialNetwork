@@ -7,6 +7,7 @@ import {setUserData, DataType } from "../../redux/AuthReducer";
 import {connect, ConnectedProps} from "react-redux";
 import {AppStateType} from "../../redux/StoreRedux";
 import style from './Header.module.css';
+import {AuthAPI} from "../../api/api"
 
 // type MapStateToPropsType = {
 //     id: number 
@@ -29,14 +30,26 @@ import style from './Header.module.css';
 
 export class HeaderContainer extends React.Component<PropsFromRedux> {
     componentDidMount = () => {
-       debugger
-        Axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, { withCredentials: true }).then(response => {            
+      
+        // Axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, { withCredentials: true })
+        AuthAPI.getAuthMe()
+        .then(response => {            
             if (response.data.resultCode === 0) {
                 let {id, email, login} = response.data.data
                 this.props.setUserData(id, email, login)                
             }
         })
     }  
+
+    // this.props.toggleIsFetching(true)
+    // // Axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}& count=${this.props.pageSize}`, { withCredentials: true })
+    // UserAPI.getUsers(this.props.currentPage, this.props.pageSize)
+    // .then(response => {
+    //     this.props.toggleIsFetching(false)
+    //     this.props.setUsers(response.data.items)
+    //    this.props.setUsersTotalCount(response.data.totalCount)
+    // })
+
 
 render = () => {
     return <div className={style.header}>
