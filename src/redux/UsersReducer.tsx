@@ -4,6 +4,7 @@ const SETUSERS = "SET-USERS"
 const SETCURRENTPAGE = "SET-CURRENT-PAGE"
 const SETUSERSTOTALCOUNT = "SET-USERS-TOTAL-COUNT"
 const TOGGLEISFATCHING = "TOGGLE-IS-FETCHING"
+const TOGGLEFOLLOWINGINPROGRESS = "TOGGLE-FOLLOWING-IN-PROGRESS"
 
 export type ActionTypes = 
 | FollowActionType 
@@ -12,6 +13,8 @@ export type ActionTypes =
 | SetCurrentPageActionType
 | SetUsersTotalCountActionType
 | ToggleIsFetchingActionType
+| TogglFollowingInProgressActionType
+
 type FollowActionType = {
 type: "FOLLOW" 
 actionId: number
@@ -36,6 +39,12 @@ type ToggleIsFetchingActionType = {
     type:"TOGGLE-IS-FETCHING"
     isFetching: boolean
 }
+type TogglFollowingInProgressActionType = {
+    type: "TOGGLE-FOLLOWING-IN-PROGRESS"
+    // followingInProgress: Array<number>
+    userId: number
+    isFetching: boolean
+    }
 
 type PhotosType = {
     small: null | string
@@ -53,16 +62,12 @@ export type UserType = {
 type InitialStateType = typeof initialState
 
 let initialState = {
-    users: [
-        // { id: 1, avatarUserUrl:"https://images.pexels.com/photos/789303/pexels-photo-789303.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", followed: true, fullName: "Julia Kozhevnikova", status: "I am a student", location: {city: "Moscow", country: "Russia"} },
-        // { id: 2, avatarUserUrl:"https://images.pexels.com/photos/792725/pexels-photo-792725.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", followed: false, fullName: "Alisa Kozhevnikova", status: "I am a child", location: {city: "Moscow", country: "Russia"} },
-        // { id: 3, avatarUserUrl:"https://images.pexels.com/photos/2182999/pexels-photo-2182999.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", followed: true, fullName: "Alina Kozhevnikova", status: "I am a child", location: {city: "Moscow", country: "Russia"} },
-        // { id: 4, avatarUserUrl:"https://images.pexels.com/photos/428328/pexels-photo-428328.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", followed: true, fullName: "Bob Bush", status: "I am a Bob", location: {city: "Moscow", country: "Russia"} },
-    ] as Array<UserType>,
+    users: [ ] as Array<UserType>,
     pageSize: 10,
     usersTotalCount:0,
     currentPage: 1,
-    isFetching: true
+    isFetching: true,
+    followingInProgress: [1,2]
    }
 
 export const usersReducer = (state= initialState, action: ActionTypes): InitialStateType => {
@@ -121,6 +126,15 @@ export const usersReducer = (state= initialState, action: ActionTypes): InitialS
             isFetching: action.isFetching}    
             return stateCopy
         }
+        case TOGGLEFOLLOWINGINPROGRESS: {
+            let stateCopy = {
+                ...state,                 
+                followingInProgress: action.isFetching 
+                ? [...state.followingInProgress, action.userId]
+                : state.followingInProgress.filter(id=>id != action.userId)
+            }
+            return stateCopy
+        }
         default: return state
     }
 }
@@ -130,4 +144,6 @@ export const setUsers = (users: Array<UserType>): ActionTypes  => ({type: "SET-U
 export const setCurrentPage = (currentPage:number): ActionTypes  => ({type: "SET-CURRENT-PAGE", currentPage})
 export const setUsersTotalCount = (usersTotalCount:number): ActionTypes  => ({type: "SET-USERS-TOTAL-COUNT", usersTotalCount})
 export const toggleIsFetching = (isFetching:boolean): ActionTypes  => ({type: "TOGGLE-IS-FETCHING", isFetching})
+export const toggleFollowingInProgress = (isFetching: boolean, userId: number): ActionTypes  => ({type: "TOGGLE-FOLLOWING-IN-PROGRESS", isFetching, userId})
+
 

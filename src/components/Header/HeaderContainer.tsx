@@ -41,16 +41,6 @@ export class HeaderContainer extends React.Component<PropsFromRedux> {
         })
     }  
 
-    // this.props.toggleIsFetching(true)
-    // // Axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}& count=${this.props.pageSize}`, { withCredentials: true })
-    // UserAPI.getUsers(this.props.currentPage, this.props.pageSize)
-    // .then(response => {
-    //     this.props.toggleIsFetching(false)
-    //     this.props.setUsers(response.data.items)
-    //    this.props.setUsersTotalCount(response.data.totalCount)
-    // })
-
-
 render = () => {
     return <div className={style.header}>
 {/*         
