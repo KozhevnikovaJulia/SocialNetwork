@@ -9,7 +9,13 @@ const instance = Axios.create ({
 export const UserAPI = {
     getUsers (currentPage: number, pageSize: number) {
         return instance.get(`users?page=${currentPage}& count=${pageSize}`)
-    }
+    },
+    postUserFollow (userId: number) {
+        return instance.post(`follow/` + userId, {})
+    },
+    deleteUserFollow (userId: number) {
+        return instance.delete(`follow/`+ userId)
+    },
 }
 
 export const AuthAPI = {
@@ -23,13 +29,3 @@ export const ProfileAPI = {
         return instance.get(`profile/` + userId)
     }
 }
-
-export const FollowAPI = {
-    postUserFollow (userId: number) {
-        return instance.post(`follow/` + userId, {})
-    },
-    deleteUserFollow (userId: number) {
-        return instance.delete(`follow/`+ userId)
-    },
-}
-
