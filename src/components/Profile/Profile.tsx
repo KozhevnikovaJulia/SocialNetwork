@@ -1,16 +1,16 @@
 import React from "react";
 import style from "./Profile.module.css";
 import {MyPostsContainer} from "./MyPosts/MyPostsContainer";
-import {ProfileInfo} from "../Profile/ProfileInfo"
+import {ProfileInfo} from "../Profile/ProfileInfo";
+import {Redirect} from "react-router-dom";
 
-type ProfilePropsType = {
-    // posts: Array<PostsType>
-    // newPostText: string
+type ProfilePropsType = {    
     profile: any
-    // setUserProfile: (profile: any) => void
+    isAuth: boolean   
 }
 
-export function Profile(props:ProfilePropsType) {      
+export function Profile(props:ProfilePropsType) {     
+    if (!props.isAuth) return  <Redirect to="/login" />
     return (       
         <div className={style.profileContant}>
             <ProfileInfo  profile={props.profile}/>

@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./Profile.module.css";
 import {Preloader} from "../../common/Preloader/Preloader";
-import mainImg from "../../images/pink.jpg"
+import mainImg from "../../images/hans-peter-gauster-3y1zF4hIPCg-unsplash (1).jpg"
 
 type ProfileInfoPropsType = {
   profile: any

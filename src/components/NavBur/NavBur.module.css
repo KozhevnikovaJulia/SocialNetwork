@@ -1,7 +1,7 @@
 .navBur {
   grid-area: navbur;
   /* background-color: #ff4f81; */
-  background-color: rgb(200, 200, 200);
+  background-color: rgb(50, 50, 50); 
   padding: 20px;
   font-size: x-large;
   font-weight: bold;
@@ -9,8 +9,8 @@
 .item a {
   text-decoration: none;
   /* color:rgb(200, 200, 200); */
-  color: black;
+  color: #a3a3a3;
 }
 .item a.active {
-  color: #e4002b;
+  color: #ffb900;
 }

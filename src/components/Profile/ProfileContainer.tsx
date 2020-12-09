@@ -20,7 +20,8 @@ export class ProfileContainer extends React.Component<ProfileContainerPropsType 
 
 let mapStateToProps = (state: any) => {
     return {
-        profile: state.profilePage.profile            
+        profile: state.profilePage.profile,    
+        isAuth: state.auth.isAuth        
     }
 }
 
