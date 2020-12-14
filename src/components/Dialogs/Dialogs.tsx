@@ -2,7 +2,6 @@ import React, { ChangeEvent } from "react";
 import style from "./Dialogs.module.css";
 import {Dialog} from "./Dialog/Dialog";
 import {Message} from "./Message/Message";
-import {Redirect} from "react-router-dom";
 import {MessagesPropsType, DialogArrayPropsType,ActionTypes, sendMessageActionCreator,changeMessageActionCreator} from "../../redux/Store";
 
 type DialogsPropsType = {
@@ -11,7 +10,6 @@ type DialogsPropsType = {
     newMessageText: string
     dialogs: Array<DialogArrayPropsType>
     messages: Array<MessagesPropsType>
-    isAuth: boolean
 }
 
 export function Dialogs(props:DialogsPropsType) {
@@ -27,7 +25,7 @@ export function Dialogs(props:DialogsPropsType) {
         let messageText = e.currentTarget.value
         props.changeMessage(messageText)        
     }
-    if (!props.isAuth) return  <Redirect to="/login" />
+
     return (
         <div className={style.dialogsContant}>
             <div className={style.dialogs}>
