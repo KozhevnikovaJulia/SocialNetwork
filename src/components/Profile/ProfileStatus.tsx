@@ -1,6 +1,4 @@
 import React from "react";
-import { parseConfigFileTextToJson } from "typescript";
-import style from "./Profile.module.css";
 
 type ProfileStatusPropsType = {
   status: string
@@ -30,6 +28,13 @@ export class ProfileStatus extends React.Component< ProfileStatusPropsType > {
     this.setState({
       status: e.currentTarget.value
     })
+  }
+
+  componentDidUpdate = (prevProps: any, prevState: any)=> {
+if (prevProps.status !== this.props.status)
+this.setState ({
+  status: this.props.status
+})
   }
 
   render () {
