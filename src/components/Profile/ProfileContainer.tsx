@@ -1,6 +1,6 @@
 import React from "react";
 import {Profile} from "./Profile";
-import {getProfile} from "../../redux/ProfileReducer";
+import {getProfile, getStatus, updateStatus} from "../../redux/ProfileReducer";
 import {connect, ConnectedProps} from "react-redux";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
@@ -11,23 +11,25 @@ export class ProfileContainer extends React.Component<ProfileContainerPropsType 
         if (!userId) {
             userId = "2"
         }  
-        this.props.getProfile(userId)         
+        this.props.getProfile(userId)    
+        this.props.getStatus(userId)     
     }
     render = () => {    
         return <div>
-            <Profile {...this.props} profile={this.props.profile}/>
+            <Profile {...this.props} profile={this.props.profile} updateStatus = {this.props.updateStatus} status={this.props.status}/>
         </div>
     }
 }
 
 let mapStateToProps = (state: any) => {
     return {
-        profile: state.profilePage.profile,    
-        isAuth: state.auth.isAuth        
+        profile: state.profilePage.profile, 
+        status: state.profilePage.status   
+        // isAuth: state.auth.isAuth        
     }
 }
 
-const connector = connect(mapStateToProps , { getProfile})  
+const connector = connect(mapStateToProps , { getProfile, getStatus, updateStatus})  
 type PropsFromRedux = ConnectedProps<typeof connector>
 type OunParamsType = {
     userId: string
@@ -35,7 +37,7 @@ type OunParamsType = {
 type ProfileContainerPropsType = RouteComponentProps<OunParamsType> & PropsFromRedux
 
 export default compose <React.ComponentType>(
-    connect (mapStateToProps, {getProfile}),
+    connect (mapStateToProps, {getProfile, getStatus, updateStatus}),
     withRouter,
     withAuthRedirect 
  )(ProfileContainer)

@@ -6,6 +6,8 @@ import mainImg from "../../images/hans-peter-gauster-3y1zF4hIPCg-unsplash (1).jp
 
 type ProfileInfoPropsType = {
   profile: any
+  status: string
+  updateStatus: (status: string)=> void
   
 }
 
@@ -18,7 +20,7 @@ export function ProfileInfo(props: ProfileInfoPropsType) {
        {/* <img src={mainImg}/>       */}
       <div className={style.ava}>
         <img src={props.profile.photos.large} />
-        <ProfileStatus status = "OK" />
+        <ProfileStatus status = {props.status} updateStatus={props.updateStatus}/>
       </div>
         </div>      
   )

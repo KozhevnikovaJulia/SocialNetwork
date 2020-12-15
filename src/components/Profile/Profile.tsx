@@ -5,12 +5,14 @@ import {ProfileInfo} from "../Profile/ProfileInfo";
 
 type ProfilePropsType = {    
     profile: any
+    status: string
+    updateStatus: (status: string) => void
 }
 
 export function Profile(props:ProfilePropsType) {     
     return (       
         <div className={style.profileContant}>
-            <ProfileInfo  profile={props.profile}/>
+            <ProfileInfo  profile={props.profile} status={props.status} updateStatus={props.updateStatus}/>
             <MyPostsContainer />
         </div>
     );
