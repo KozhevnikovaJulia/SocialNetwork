@@ -1,13 +1,11 @@
 import {ProfileAPI} from "../api/api";
 
 const ADD_POST = "ADD-POST"
-const CHANGE_POST = "CHANGE-POST"
 const SET_USER_PROFILE = "SET-USER-PROFILE"
 const SET_STATUS = "SET-STATUS"
 
 export type ActionTypes = 
 | AddPostActionType 
-| ChangePostActionType 
 | SendMessageActionType 
 | ChangeMessageActionType
 |SetUserProfileActionType 
@@ -15,10 +13,7 @@ export type ActionTypes =
 
 type AddPostActionType = {
 type:"ADD-POST"
-}
-type ChangePostActionType = {
-    type:"CHANGE-POST"
-    postMessage: string
+newPost: any
 }
 type SendMessageActionType = {
     type: "SEND-MESSAGE"
@@ -50,7 +45,6 @@ let initialState = {
         { id: 2, message: "Hi", likesCount: 4 },
         { id: 3, message: "Hello", likesCount: 5 }
     ] as Array<PostsType>,
-    newPostText: "OK",
     profile: null,
     status: ""
 }
@@ -59,20 +53,12 @@ export const profileReducer = (state= initialState, action: ActionTypes): Initia
     
     switch (action.type) {
         case ADD_POST: {
-            let newPost = { id: 5, message: state.newPostText, likesCount: 0 }
-
-            let stateCopy = { ...state }
-            stateCopy.posts = [...state.posts]
-
-            stateCopy.posts.push(newPost)
-            stateCopy.newPostText = ""
-            return stateCopy
+            let newPstBody = action.newPost
+            return {
+                ...state,
+                posts: [...state.posts, {id:7, likesCount: 5, message: newPstBody}]
+            }
         }
-         case CHANGE_POST: {
-            let stateCopy = {...state}
-            stateCopy.newPostText = action.postMessage
-            return stateCopy
-         }
          case SET_USER_PROFILE: {
             let stateCopy = {...state}
             stateCopy.profile= action.profile          
@@ -86,8 +72,7 @@ export const profileReducer = (state= initialState, action: ActionTypes): Initia
         default: return state
     }
 }
-export const addPost = (): ActionTypes  => ({type: "ADD-POST"})
-export const changePost = (postMessage: string): ActionTypes  => ({type: "CHANGE-POST", postMessage })
+export const addPost = (newPost: any): ActionTypes  => ({type: "ADD-POST", newPost})
 export const setUserProfile = (profile: any): ActionTypes  => ({type: "SET-USER-PROFILE", profile })
 export const setStatus = (status: string): ActionTypes  => ({type: "SET-STATUS", status })
 

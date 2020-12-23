@@ -1,7 +1,7 @@
 const SEND_MESSAGE = "SEND-MESSAGE"
-const CHANGE_MESSAGE = "CHANGE-MESSAGE"
 
-export type ActionTypes = AddPostActionType | ChangePostActionType | SendMessageActionType | ChangeMessageActionType
+export type ActionTypes = AddPostActionType | ChangePostActionType | SendMessageActionType 
+
 type AddPostActionType = {
 type:"ADD-POST"
 }
@@ -11,10 +11,7 @@ type ChangePostActionType = {
 }
 type SendMessageActionType = {
     type: "SEND-MESSAGE"
-}
-type ChangeMessageActionType = {
-    type: "CHANGE-MESSAGE"
-    messageText: string
+    newMessage: any
 }
 
 type MessagesType = {
@@ -39,31 +36,21 @@ let initialState  = {
         { id: 1, textMessage: "Hi" },
         { id: 2, textMessage: "Hello" },
         { id: 3, textMessage: "How are you" }
-    ] as Array<MessagesType>,
-    newMessageText: ""
+    ] as Array<MessagesType>  
 }
 
 export const dialogsReducer = (state = initialState, action: ActionTypes): InitialStateType => {
     switch (action.type) {
         case SEND_MESSAGE: {
-            let newMessage = { id: 6, textMessage: state.newMessageText }
-
-            let stateCopy = { ...state,
-            messages: [...state.messages] }
-            
-        stateCopy.messages.push(newMessage)
-        stateCopy.newMessageText = ""
-            return stateCopy
-        }
-         case CHANGE_MESSAGE: {
-            let stateCopy = {...state}
-            stateCopy.newMessageText = action.messageText
-            return stateCopy
-         }
+            let bodyMessage = action.newMessage
+            return {
+                ...state,
+                messages: [...state.messages, {id:6, textMessage:bodyMessage}]
+            }
+        }         
     
         default: return state
     }
     
 }
-export const sendMessageActionCreator = (): ActionTypes  => ({type: "SEND-MESSAGE"})
-export const changeMessageActionCreator = (messageText: string): ActionTypes  => ({type: "CHANGE-MESSAGE", messageText })
+export const sendMessageActionCreator = (newMessage: any): ActionTypes  => ({type: "SEND-MESSAGE", newMessage})
