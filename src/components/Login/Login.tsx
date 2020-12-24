@@ -2,9 +2,10 @@ import React from 'react';
 import { reduxForm, Field } from 'redux-form';
 import {required} from "../../util/Validator";
 import {Input} from "../../common/FormControl/FormControl";
-import {connect, ConnectedProps} from "react-redux";
+import {connect} from "react-redux";
 import {login} from "../../redux/AuthReducer";
-import { Redirect } from "react-router-dom"
+import { Redirect } from "react-router-dom";
+import style from "../../common/FormControl/FormControl.module.css"
 
 
 export function LoginForm(props: any) {
@@ -12,7 +13,10 @@ export function LoginForm(props: any) {
     <form onSubmit={props.handleSubmit} >
       <div> <Field name="email" component={Input} type="text"  placeholder={"Email"} validate={[required ]}/></div>      
       <div><Field name="password" component={Input} type="password"  placeholder={"Password"} validate={[required ]}/></div>
-      <div><Field name="rememberMe" component={Input} type="checkbox" />Remember me</div>    
+      <div><Field name="rememberMe" component={Input} type="checkbox" />Remember me</div> 
+
+      {props.error && <div className = {style.formSummeryError}>{props.error}</div>} 
+
       <div><button>Login</button></div>
     </form>
   )

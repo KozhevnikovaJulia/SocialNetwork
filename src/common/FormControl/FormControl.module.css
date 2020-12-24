@@ -5,3 +5,7 @@ border: 2px solid red
 .errorSpan {
   color: red;
 }
+.formSummeryError {
+  border: 2px solid red;
+  color: red;
+}
