@@ -1,6 +1,6 @@
 import React from "react";
 import {Header} from "./Header";
-import {getMe} from "../../redux/AuthReducer";
+import {getMe, logout} from "../../redux/AuthReducer";
 import {connect, ConnectedProps} from "react-redux";
 import {AppStateType} from "../../redux/StoreRedux";
 import style from './Header.module.css';
@@ -22,8 +22,8 @@ let mapStateToProps = (state: AppStateType) => {
         isAuth: state.auth.isAuth
     }
 }  
-  const connector = connect(mapStateToProps , { getMe})
+  const connector = connect(mapStateToProps , { getMe, logout})
   
   type PropsFromRedux = ConnectedProps<typeof connector>
 
-export default connect(mapStateToProps, {getMe} ) (HeaderContainer)
+export default connect(mapStateToProps, {getMe, logout} ) (HeaderContainer)
