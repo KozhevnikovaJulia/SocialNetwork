@@ -1,16 +1,32 @@
-.navBur {
-  grid-area: navbur;
-  /* background-color: #ff4f81; */
-  background-color: rgb(50, 50, 50); 
-  padding: 20px;
-  font-size: x-large;
-  font-weight: bold;
+.navBur {  
+  background-color: #1e2745;  
+  position: fixed;
+  z-index: 999;
+  top: 75px;
+  width: 250px;
+  height: 100vh;
 }
 .item a {
-  text-decoration: none;
-  /* color:rgb(200, 200, 200); */
-  color: #a3a3a3;
+  text-decoration: none; 
+  color: #8c91b6;
+  font-size: 14px;   
+  position: relative;
+  padding: 15px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 5px;
 }
 .item a.active {
-  color: #ffb900;
+  color: #2aa3fb;
 }
+
+@media screen and (max-width: 1299px){   
+.navBur {   
+  display: inline-block;
+    z-index: 99;
+    left: -260px;
+}
+}
+

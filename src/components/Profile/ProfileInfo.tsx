@@ -2,7 +2,7 @@ import React from "react";
 import style from "./Profile.module.css";
 import {Preloader} from "../../common/Preloader/Preloader";
 import {ProfileStatus} from "./ProfileStatus";
-import mainImg from "../../images/hans-peter-gauster-3y1zF4hIPCg-unsplash (1).jpg"
+import mainImg from "../../assets/image/pexels-moose-photos-1037995.jpg"
 
 type ProfileInfoPropsType = {
   profile: any
@@ -15,9 +15,13 @@ type ProfileInfoPropsType = {
 export function ProfileInfo(props: ProfileInfoPropsType) {
   if(!props.profile){
     return <Preloader/>}
+
+    const mainImage= {
+      backgroundImage: `url(${mainImg })`
+    };
   return (   
         <div >
-       {/* <img src={mainImg}/>       */}
+       <div className={style.mainImageWrapper} style={mainImage}></div>
       <div className={style.ava}>
         <img src={props.profile.photos.large} />
         <ProfileStatus status = {props.status} updateStatus={props.updateStatus}/>

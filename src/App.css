@@ -1,19 +1,36 @@
 .app-wrapper {
     min-height: 100vh;
     min-width: 100vh;
-    margin: 0 auto;
-    display: grid;
-    grid-template-areas:
-    "header header"
-    "navbur contant";
+    margin: 0 auto;  
+}
+.app-body {
+    display: flex;
+}
+.app-content {
+    background-color:#182039;
+    height: 100vh;
+    margin-left: 250px;
+    margin-right: 250px;
+    margin-top: 75px;
+    width: calc(100% - 500px);
+    }
 
-    grid-template-rows: 20%px 1fr;
-    grid-template-columns: 20% 1fr;
-    grid-gap: 1vw;
-    /* background-color: #e4002b */
-}
-.app-wrapper-content {
-    grid-area: contant;
-    background-color:rgb(50, 50, 50) 
-    /* background-color: #87cefa; */
-}
+    
+@media screen and (max-width: 1299px){   
+    .app-content{   
+        width: 100%;
+        margin: 0;
+  }
+  }
+    /* @media screen and (max-width: 1360px){
+        .contant  {
+            margin-left: 90px;
+            width: calc(100% - 90px);
+        }}
+    @media screen and (max-width: 1020px){
+        .contant {
+            margin-left: 0;
+            width: 100%;
+        }} */
+
+

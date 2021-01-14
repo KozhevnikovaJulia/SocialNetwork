@@ -1,8 +1,9 @@
-import React, { ChangeEvent } from "react";
-import style from "./Users.module.css";
-import { UserType } from "../../redux/UsersReducer";
-import userPhoto from "../../images/iconfinder_user_male4_172628.png";
-import { NavLink } from "react-router-dom";
+import React, { ChangeEvent } from "react"
+import style from "./Users.module.css"
+import { UserType } from "../../redux/UsersReducer"
+import userPhoto from "../../images/iconfinder_user_male4_172628.png"
+import { NavLink } from "react-router-dom"
+import mainImg from "../../assets/image/pexels-kim-van-vuuren-1590159.jpg"
 
 type UsersPropsType = {
     users: Array<UserType>
@@ -23,8 +24,13 @@ export function Users(props: UsersPropsType) {
     for (i = 1; i <= pageCount; i++) {
         pages.push(i)
     }  
- 
-    return <div>         
+    const mainImage= {
+        backgroundImage: `url(${mainImg })`
+      }
+    return <div>   
+        <div className={style.musicContant}>
+            <div className={style.mainImageWrapper } style={mainImage}></div>          
+        </div>      
         {pages.map(p => {
             const currentPageClass = props.currentPage === p ? style.selectedPage : "";
             return <span className={currentPageClass}

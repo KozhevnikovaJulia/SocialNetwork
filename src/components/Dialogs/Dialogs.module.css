@@ -1,6 +1,5 @@
 .dialogsContant {
-    display: grid;
-    grid-template-columns: 4fr 8fr;
+   
 
 }
 .dialogs {
@@ -11,3 +10,12 @@
 .messages {
     padding: 20px;
 }
+.mainImageWrapper  {
+    height: 250px;
+    background-size:cover;
+    background-position: center
+  }
+  .dialogsWrapper {
+      display: flex;
+      justify-content: space-evenly;
+  }

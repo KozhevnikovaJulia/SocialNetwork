@@ -36,3 +36,9 @@
 .selectedPage {
     font-weight: bold;
 }
+.mainImageWrapper  {
+    height: 250px;
+    background-size:cover;
+    background-position: center
+  }
+ 

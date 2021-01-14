@@ -4,6 +4,7 @@ import {Dialog} from "./Dialog/Dialog";
 import {Message} from "./Message/Message";
 import {MessagesPropsType, DialogArrayPropsType} from "../../redux/Store";
 import {AddMessageReduxForm} from "../AddMessageForm/AddMessageForm";
+import mainImg from "../../assets/image/pexels-jill-wellington-3969250.jpg"
 
 type DialogsPropsType = {
     sendMessage: (newMessage: any)=> void
@@ -24,19 +25,23 @@ export function Dialogs(props:DialogsPropsType) {
     const addMessage = (value: any) => {
         props.sendMessage(value.newMessage)
     }
-
+    const mainImage= {
+        backgroundImage: `url(${mainImg })`
+      };
     return (
         <div className={style.dialogsContant}>
-            <div className={style.dialogs}>
-                {DialogElements}
+
+            <div className={style.mainImageWrapper} style={mainImage}></div>
+            <div className={style.dialogsWrapper}>
+                <div className={style.dialogs}>
+                    {DialogElements}
+                </div>
+                <div className={style.messages}>
+                    <div>{MessageElements}</div>
+                    <AddMessageReduxForm onSubmit={addMessage} />
+                </div>
             </div>
-            <div className={style.messages}>
-                <div>{MessageElements}</div>
-                <AddMessageReduxForm onSubmit ={addMessage}/>
-            </div>
+
         </div>
-
-
-
-);
+)
 }

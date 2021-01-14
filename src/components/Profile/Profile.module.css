@@ -7,3 +7,8 @@
 .ava img{
   width: 30%; 
 }
+.mainImageWrapper{
+  height: 250px;
+  background-size:cover;
+  background-position: center
+}
