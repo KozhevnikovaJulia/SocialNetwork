@@ -1,4 +1,4 @@
-import Axios from "axios";
+import Axios from "axios"
 
 const instance = Axios.create ({
     baseURL: "https://social-network.samuraijs.com/api/1.0/",
