@@ -11,16 +11,15 @@ body {
   background-color:#182039;
 }
 
-/* 
-body {
-  margin: 0;
-  font-family: 'Poppins',sans-serif;
-  font-size: 15px;
-  line-height: 30px;
-  font-weight: 400;
-  color: #a88590;
-  background-color: #302729;
-  overflow-x: hidden;
- 
- 
-} */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    margin: 0px;
+    line-height: 1.5;
+    color: #8c91b6;
+}
+
+a {
+  color: #2aa3fb;
+  text-decoration: none;
+}

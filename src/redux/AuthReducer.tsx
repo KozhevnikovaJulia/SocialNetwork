@@ -4,28 +4,6 @@ import {stopSubmit} from "redux-form"
 
 const SET_USER_DATA= "SET-USER-DATA"
 
-export type ActionTypes =  SetLoginActionType 
-
-export type DataType = {
-    id: number | null
-    email: string | null
-    login: string | null
-    isAuth: boolean 
-}
-
-type SetLoginActionType = {
-type: typeof SET_USER_DATA
-data: DataType
-}
-
-type InitialStateType = {
-    id: number | null
-    email: string | null    
-   login: string | null
-   isAuth: boolean
-}
-
-
 let initialState: InitialStateType = {
     id: null as number | null,
     email: null as string | null,    
@@ -33,7 +11,7 @@ let initialState: InitialStateType = {
    isAuth: false
 }
 
-export const authReducer = (state= initialState, action: ActionTypes): InitialStateType => {
+export const authReducer = (state= initialState, action: ActionsType): InitialStateType => {
     
     switch (action.type) {
         
@@ -47,15 +25,14 @@ export const authReducer = (state= initialState, action: ActionTypes): InitialSt
     }
 }
 
-export const setUserData = ( id: number | null, email:string | null, login: string | null, isAuth: boolean): ActionTypes  => ({type: SET_USER_DATA, data: {id, email, login, isAuth}})
+export const setUserData = ( id: number | null, email:string | null, login: string | null, isAuth: boolean) => ({type: SET_USER_DATA, data: {id, email, login, isAuth}}as const)
 
-export const getMe = () =>
-    (dispatch: Dispatch) => {
-        AuthAPI.getAuthMe()
+export const getMe = () => (dispatch: Dispatch) => {
+       return AuthAPI.getAuthMe()
         .then(response => {            
             if (response.data.resultCode === 0) {
                 let {id, email, login, isAuth} = response.data.data
-               dispatch(setUserData(id, email, login, true ))                
+               dispatch(setUserData(id, email, login, true))                
             }
         })
     }
@@ -82,3 +59,22 @@ export const getMe = () =>
             }
         })
     }
+
+    //types
+
+export type SetUserDataActionType = ReturnType<typeof setUserData> 
+type ActionsType = SetUserDataActionType
+
+export type DataType = {
+    id: number | null
+    email: string | null
+    login: string | null
+    isAuth: boolean 
+}
+
+type InitialStateType = {
+    id: number | null
+    email: string | null    
+   login: string | null
+   isAuth: boolean
+}

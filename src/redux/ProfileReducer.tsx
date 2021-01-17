@@ -4,41 +4,6 @@ const ADD_POST = "ADD-POST"
 const SET_USER_PROFILE = "SET-USER-PROFILE"
 const SET_STATUS = "SET-STATUS"
 
-export type ActionTypes = 
-| AddPostActionType 
-| SendMessageActionType 
-| ChangeMessageActionType
-|SetUserProfileActionType 
-|SetStatusActionType 
-
-type AddPostActionType = {
-type:"ADD-POST"
-newPost: any
-}
-type SendMessageActionType = {
-    type: "SEND-MESSAGE"
-}
-type ChangeMessageActionType = {
-    type: "CHANGE-MESSAGE"
-    messageText: string
-}
-type SetUserProfileActionType = {
-    type: "SET-USER-PROFILE",
-    profile:  any
-}
-type SetStatusActionType = {
-    type: "SET-STATUS",
-    status:  string
-}
-
-export type PostsType = {
-    id: number
-    message: string
-    likesCount: number
-}
-
-type InitialStateType = typeof initialState
-
 let initialState = {
     posts: [
         { id: 1, message: "It is my first post", likesCount: 0 },
@@ -49,7 +14,7 @@ let initialState = {
     status: ""
 }
 
-export const profileReducer = (state= initialState, action: ActionTypes): InitialStateType => {
+export const profileReducer = (state= initialState, action: ActionsType): InitialStateType => {
     
     switch (action.type) {
         case ADD_POST: {
@@ -72,9 +37,9 @@ export const profileReducer = (state= initialState, action: ActionTypes): Initia
         default: return state
     }
 }
-export const addPost = (newPost: any): ActionTypes  => ({type: "ADD-POST", newPost})
-export const setUserProfile = (profile: any): ActionTypes  => ({type: "SET-USER-PROFILE", profile })
-export const setStatus = (status: string): ActionTypes  => ({type: "SET-STATUS", status })
+export const addPost = (newPost: any) => ({type: "ADD-POST", newPost} as const)
+export const setUserProfile = (profile: any) => ({type: "SET-USER-PROFILE", profile } as const)
+export const setStatus = (status: string) => ({type: "SET-STATUS", status } as const)
 
 export const getProfile = (userId: string) => 
 (dispatch: any) => {     
@@ -98,4 +63,15 @@ export const updateStatus = (status: string) =>
                 dispatch(setStatus(status))
             }                    
     })
+}
+
+//types
+type InitialStateType = typeof initialState
+
+export type ActionsType = ReturnType<typeof addPost> | ReturnType<typeof setUserProfile> | ReturnType<typeof setStatus>
+
+export type PostsType = {
+    id: number
+    message: string
+    likesCount: number
 }

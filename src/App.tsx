@@ -1,29 +1,34 @@
-import React from "react";
-import "./App.css";
-import {Route, BrowserRouter} from "react-router-dom";
-import {NavBur} from "./components/NavBur/NavBur";
-import  HeaderContainer  from "./components/Header/HeaderContainer";
-import  ProfileContainer  from "./components/Profile/ProfileContainer";
-import DialogsContainer from "./components/Dialogs/DialogsContainer";
-import UsersContainer from "./components/Users/UsersContainer";
+import React from "react"
+import {connect, ConnectedProps} from "react-redux"
+import "./App.css"
+import {Route} from "react-router-dom"
+import {NavBur} from "./components/NavBur/NavBur"
+import  HeaderContainer  from "./components/Header/HeaderContainer"
+import  ProfileContainer  from "./components/Profile/ProfileContainer"
+import DialogsContainer from "./components/Dialogs/DialogsContainer"
+import UsersContainer from "./components/Users/UsersContainer"
 import Login from "./components/Login/Login"
 import { RightBur } from "./components/RightBur/RightBur"
 import {Music} from "./components/Music/Music"
 import {Settings} from "./components/Settings/Settings"
 import {News} from "./components/News/News"
+import {AppStateType} from "./redux/StoreRedux"
+import { initializeApp } from "./redux/AppReducer"
+import { Preloader } from "./common/Preloader/Preloader"
+import { RouteComponentProps, withRouter } from "react-router-dom"
+import { compose } from "redux"
 
-type AppPropsType = {
- 
-}
 
-function App(props: AppPropsType) {
+export class App extends React.Component<AppPropsType > {
+  componentDidMount = () => {  
+    this.props.initializeApp()         
+}  
+render = () => {
+  if (!this.props.isInitialized) {
+    return <Preloader />
+  }
   return (
-    <BrowserRouter>
       <div className="app-wrapper">
-
-        {/* <div className="app-header">
-          
-        </div> */}
         <HeaderContainer />
         <div className="app-body">
           <NavBur />
@@ -45,10 +50,24 @@ function App(props: AppPropsType) {
               <News />} />
           </div>
         </div >
-
       </div>
-    </BrowserRouter>
-  );
+  )
+}
 }
 
-export default App
+let mapStateToProps = (state: AppStateType) => {
+  return {
+    isInitialized: state.app.isInitialized
+  }
+}  
+const connector = connect(mapStateToProps , {initializeApp})
+
+type PropsFromRedux = ConnectedProps<typeof connector>
+
+type AppPropsType = RouteComponentProps & PropsFromRedux
+
+export default compose <React.ComponentType>(
+  connect(mapStateToProps, {initializeApp} ),
+  withRouter 
+)(App)
+

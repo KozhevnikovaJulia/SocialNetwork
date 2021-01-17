@@ -20,8 +20,13 @@
 }
 .item a.active {
   color: #2aa3fb;
+  background-color: #29324f;
+  border-radius: 5px;
 }
 
+.icon {
+  margin-right: 10px;
+}
 @media screen and (max-width: 1299px){   
 .navBur {   
   display: inline-block;
@@ -29,4 +34,5 @@
     left: -260px;
 }
 }
+
 
