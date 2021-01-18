@@ -3,7 +3,7 @@ import {Users} from "./Users"
 import {Preloader} from "../../common/Preloader/Preloader"
 import { getUsers, follow, unfollow } from "../../redux/UsersReducer"
 import {connect, ConnectedProps} from "react-redux"
-import {getUsersSelector, getPageSizeSelector, getUsersTotalCountSelector, getCurrentPageSelector, getIsFetchingSelector, getFollowingInProgressSelector } from "../../redux/UsersSelectors"
+import {getUsersSuperSelector , getPageSizeSelector, getUsersTotalCountSelector, getCurrentPageSelector, getIsFetchingSelector, getFollowingInProgressSelector } from "../../redux/UsersSelectors"
 
 export class UsersContainer extends React.Component<PropsFromRedux> {
     componentDidMount = () => {
@@ -44,7 +44,7 @@ render = () => {
 
 let mapStateToProps = (state: any) => {
     return {
-        users: getUsersSelector(state),
+        users: getUsersSuperSelector (state),
         pageSize: getPageSizeSelector(state),
         usersTotalCount: getUsersTotalCountSelector(state),
         currentPage: getCurrentPageSelector(state),    
