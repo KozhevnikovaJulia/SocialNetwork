@@ -20,12 +20,10 @@ export function ProfileStatusWithUseState(props: ProfileStatusPropsType) {
     setStatus(e.currentTarget.value)
   }
 
-  //   componentDidUpdate = (prevProps: any, prevState: any)=> {
-  // if (prevProps.status !== this.props.status)
-  // this.setState ({
-  //   status: this.props.status
-  // })
-  //   }
+  useEffect(() => {       
+    setStatus(props.status)       
+}, [props.status])  
+
 
   return (
     <div >
