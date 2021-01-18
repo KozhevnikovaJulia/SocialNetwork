@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 
 type ProfileStatusPropsType = {
   status: string
@@ -6,7 +6,7 @@ type ProfileStatusPropsType = {
 }
 
 
-export class ProfileStatus extends React.Component< ProfileStatusPropsType > {  
+export class ProfileStatus extends React.PureComponent< ProfileStatusPropsType > {  
   state = {
     editMode: false,
     status: this.props.status

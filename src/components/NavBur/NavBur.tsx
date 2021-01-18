@@ -10,7 +10,7 @@ import { faUsers} from "@fortawesome/free-solid-svg-icons"
 import { faAddressCard} from "@fortawesome/free-solid-svg-icons"
 
 
-export function NavBur() {
+export const NavBur = React.memo (() => {
   return (
       <nav className={style.navBur}>
         <div className={style.item}>
@@ -38,6 +38,6 @@ export function NavBur() {
           <FontAwesomeIcon className={style.icon} icon={faCog} size="1x" />Settings</NavLink>
       </div>
     </nav>
-
-  );
+  )
 }
+)

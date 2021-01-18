@@ -6,7 +6,7 @@ import { faGlobeEurope} from "@fortawesome/free-solid-svg-icons"
 import { faConnectdevelop} from "@fortawesome/free-brands-svg-icons"
 import { faSearch} from "@fortawesome/free-solid-svg-icons"
 
-export function Header(props: {login: string | null; isAuth: boolean; logout: any}) {
+export const Header = React.memo ((props: {login: string | null; isAuth: boolean; logout: any}) => {
   return (
     <div className={style.header}>
       <div className={style.logo}>
@@ -30,11 +30,7 @@ export function Header(props: {login: string | null; isAuth: boolean; logout: an
           ? <div>{props.login}  <button onClick={props.logout}>Logout</button> </div>
           : <NavLink to="/login" activeClassName={style.active}>Login</NavLink>
         }
-
       </div>
-
     </div>
-
-  );
-}
-
+  )}
+)

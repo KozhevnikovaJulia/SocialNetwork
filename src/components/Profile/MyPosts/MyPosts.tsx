@@ -1,8 +1,8 @@
-import React from 'react';
-import style from './MyPosts.module.css';
-import { Post } from './Post/Post';
-import { PostsPropsType} from '../../../redux/Store';
-import {AddPostReduxForm } from "../../AddPostForm/AddPostForm";
+import React from "react"
+import style from "./MyPosts.module.css"
+import { Post } from "./Post/Post"
+import { PostsPropsType} from "../../../redux/Store"
+import {AddPostReduxForm } from "../../AddPostForm/AddPostForm"
 
 type MyPostsPropsType = {
  addPost: (newPost: any)=> void
@@ -10,7 +10,7 @@ type MyPostsPropsType = {
  newPostText: string
 }
 
-export function MyPosts(props:MyPostsPropsType  ) {  
+export const MyPosts = React.memo ((props:MyPostsPropsType) => {  
   let PostElements = props.posts.map ((post:PostsPropsType) => 
   <Post message={post.message} likesCount={post.likesCount} id={post.id} />)
 
@@ -24,10 +24,9 @@ export function MyPosts(props:MyPostsPropsType  ) {
       <AddPostReduxForm  onSubmit ={addPost}/>     
       <div className={style.posts}>
         {PostElements}
-
       </div>
     </div>
 
   );
 }
-
+)

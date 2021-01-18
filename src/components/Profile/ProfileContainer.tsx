@@ -6,7 +6,7 @@ import { RouteComponentProps, withRouter } from "react-router-dom"
 import { withAuthRedirect } from "../../hoc/withAuthRedirect"
 import { compose } from "redux"
 
-export class ProfileContainer extends React.Component<ProfileContainerPropsType > {
+export class ProfileContainer extends React.PureComponent<ProfileContainerPropsType > {
     componentDidMount = () => {            
         let userId = this.props.match.params.userId
         if (!userId) {

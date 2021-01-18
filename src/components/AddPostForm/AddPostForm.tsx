@@ -1,11 +1,11 @@
-import React from 'react';
-import { reduxForm, Field } from 'redux-form';
-import {required, maxLengthCreator} from "../../util/Validator";
-import {TextArea} from "../../common/FormControl/FormControl";
+import React from "react"
+import { reduxForm, Field } from "redux-form"
+import {required, maxLengthCreator} from "../../util/Validator"
+import {TextArea} from "../../common/FormControl/FormControl"
 
 let maxLength10 = maxLengthCreator(10)
 
-export function AddPostForm (props: any) {
+export const AddPostForm = React.memo ((props: any) => {
   return (
     <form onSubmit={props.handleSubmit} >
       
@@ -14,6 +14,7 @@ export function AddPostForm (props: any) {
     </form>
   )
 }
+)
 export const AddPostReduxForm = reduxForm({
   form: 'newPost'
 })(AddPostForm)

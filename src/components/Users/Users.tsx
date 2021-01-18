@@ -1,7 +1,7 @@
 import React, { ChangeEvent } from "react"
 import style from "./Users.module.css"
 import { UserType } from "../../redux/UsersReducer"
-import userPhoto from "../../images/iconfinder_user_male4_172628.png"
+import userPhoto from "../../assets/image/iconfinder_user_male4_172628.png"
 import { NavLink } from "react-router-dom"
 import mainImg from "../../assets/image/pexels-kim-van-vuuren-1590159.jpg"
 
@@ -16,7 +16,7 @@ type UsersPropsType = {
     unfollow: (userId: number)=> void
 }
 
-export function Users(props: UsersPropsType) {   
+export const Users = React.memo ((props: UsersPropsType) => {   
    
     let pageCount: number = Math.ceil(props.usersTotalCount / props.pageSize) // Math.сeil округляет число в большую сторону
     let pages: Array<number> = []
@@ -62,3 +62,4 @@ export function Users(props: UsersPropsType) {
         }
     </div>
 }
+)

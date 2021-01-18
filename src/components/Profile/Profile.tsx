@@ -9,7 +9,7 @@ type ProfilePropsType = {
     updateStatus: (status: string) => void
 }
 
-export function Profile(props:ProfilePropsType) {     
+export const Profile = React.memo ((props:ProfilePropsType) => {     
     return (       
         <div className={style.profileContant}>
             <ProfileInfo  profile={props.profile} status={props.status} updateStatus={props.updateStatus}/>
@@ -17,3 +17,4 @@ export function Profile(props:ProfilePropsType) {
         </div>
     );
 }
+)

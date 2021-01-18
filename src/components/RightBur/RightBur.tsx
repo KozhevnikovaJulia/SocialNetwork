@@ -1,12 +1,12 @@
-import React from 'react';
-import style from './RightBur.module.css';
+import React from "react"
+import style from "./RightBur.module.css"
 
 
-export function RightBur() {
+export const RightBur = React.memo (() => {
   return (
       <nav className={style.rightBur}>
      right bur
       </nav>
 
-  );
-}
+  )}
+)

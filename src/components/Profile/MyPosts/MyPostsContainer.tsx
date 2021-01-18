@@ -1,6 +1,6 @@
-import { MyPosts } from './MyPosts';
-import { addPost} from '../../../redux/ProfileReducer';
-import {connect} from "react-redux";
+import { MyPosts } from "./MyPosts"
+import { addPost} from "../../../redux/ProfileReducer"
+import {connect} from "react-redux"
 
 let mapStateToProps = (state: any) => {
   return {

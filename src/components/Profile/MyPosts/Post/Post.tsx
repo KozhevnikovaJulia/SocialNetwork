@@ -1,5 +1,5 @@
-import React from 'react';
-import style from "./Post.module.css";
+import React from "react"
+import style from "./Post.module.css"
 
 type PostPropsType = {
     message:string
@@ -7,7 +7,7 @@ type PostPropsType = {
     id: number
 }
 
-export function Post(props: PostPropsType) {
+export const Post = React.memo ((props: PostPropsType) => {
   return (
       <div className={style.post}>
         <img src="https://pbs.twimg.com/media/ECfnBGCXoAAAIRM.jpg:large"/>
@@ -18,6 +18,6 @@ export function Post(props: PostPropsType) {
 
       </div>
 
-  );
+  )
 }
-
+)

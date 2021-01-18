@@ -1,7 +1,7 @@
-import React from "react";
-import style from "./Profile.module.css";
-import {Preloader} from "../../common/Preloader/Preloader";
-import {ProfileStatusWithUseState} from "./ProfileStatusWithUseState";
+import React from "react"
+import style from "./Profile.module.css"
+import {Preloader} from "../../common/Preloader/Preloader"
+import {ProfileStatusWithUseState} from "./ProfileStatusWithUseState"
 import mainImg from "../../assets/image/pexels-moose-photos-1037995.jpg"
 
 type ProfileInfoPropsType = {
@@ -11,8 +11,7 @@ type ProfileInfoPropsType = {
   
 }
 
-
-export function ProfileInfo(props: ProfileInfoPropsType) {
+export const ProfileInfo = React.memo ((props: ProfileInfoPropsType) => {
   if(!props.profile){
     return <Preloader/>}
 
@@ -29,4 +28,4 @@ export function ProfileInfo(props: ProfileInfoPropsType) {
         </div>      
   )
 }
-
+)

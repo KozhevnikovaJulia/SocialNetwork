@@ -19,7 +19,7 @@ import { RouteComponentProps, withRouter } from "react-router-dom"
 import { compose } from "redux"
 
 
-export class App extends React.Component<AppPropsType > {
+export class App extends React.PureComponent<AppPropsType > {
   componentDidMount = () => {  
     this.props.initializeApp()         
 }  

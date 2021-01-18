@@ -5,7 +5,7 @@ import { getUsers, follow, unfollow } from "../../redux/UsersReducer"
 import {connect, ConnectedProps} from "react-redux"
 import {getUsersSuperSelector , getPageSizeSelector, getUsersTotalCountSelector, getCurrentPageSelector, getIsFetchingSelector, getFollowingInProgressSelector } from "../../redux/UsersSelectors"
 
-export class UsersContainer extends React.Component<PropsFromRedux> {
+export class UsersContainer extends React.PureComponent<PropsFromRedux> {
     componentDidMount = () => {
         this.props.getUsers(this.props.currentPage, this.props.pageSize)       
     }  

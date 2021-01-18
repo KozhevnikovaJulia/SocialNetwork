@@ -1,4 +1,3 @@
-import {AuthAPI} from "../api/api"
 import {Dispatch} from "redux"
 import { getMe, SetUserDataActionType } from "./AuthReducer"
 

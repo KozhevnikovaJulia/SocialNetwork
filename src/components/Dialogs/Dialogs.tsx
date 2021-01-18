@@ -14,7 +14,7 @@ type DialogsPropsType = {
     messages: Array<MessagesPropsType>
 }
 
-export function Dialogs(props:DialogsPropsType) {
+export const Dialogs = React.memo ((props:DialogsPropsType) => {
     let DialogElements = props.dialogs.map((dialog: DialogArrayPropsType) => {
         return <Dialog id={dialog.id} name={dialog.name} />
     })
@@ -43,5 +43,5 @@ export function Dialogs(props:DialogsPropsType) {
             </div>
 
         </div>
+)}
 )
-}
