@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./Profile.module.css";
 import {Preloader} from "../../common/Preloader/Preloader";
-import {ProfileStatus} from "./ProfileStatus";
+import {ProfileStatusWithUseState} from "./ProfileStatusWithUseState";
 import mainImg from "../../assets/image/pexels-moose-photos-1037995.jpg"
 
 type ProfileInfoPropsType = {
@@ -24,7 +24,7 @@ export function ProfileInfo(props: ProfileInfoPropsType) {
        <div className={style.mainImageWrapper} style={mainImage}></div>
       <div className={style.ava}>
         <img src={props.profile.photos.large} />
-        <ProfileStatus status = {props.status} updateStatus={props.updateStatus}/>
+        <ProfileStatusWithUseState status = {props.status} updateStatus={props.updateStatus}/>
       </div>
         </div>      
   )
