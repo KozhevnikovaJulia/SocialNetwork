@@ -1,9 +1,10 @@
-import React, { ChangeEvent } from "react"
+import React from "react"
 import style from "./Users.module.css"
 import { UserType } from "../../redux/UsersReducer"
 import userPhoto from "../../assets/image/iconfinder_user_male4_172628.png"
 import { NavLink } from "react-router-dom"
 import mainImg from "../../assets/image/pexels-kim-van-vuuren-1590159.jpg"
+import {Paginator} from "./Paginator"
 
 type UsersPropsType = {
     users: Array<UserType>
@@ -16,28 +17,18 @@ type UsersPropsType = {
     unfollow: (userId: number)=> void
 }
 
-export const Users = React.memo ((props: UsersPropsType) => {   
+export const Users = React.memo (({users, pageSize, usersTotalCount, currentPage, onChangePage, followingInProgress, follow, unfollow}: UsersPropsType) => {     
    
-    let pageCount: number = Math.ceil(props.usersTotalCount / props.pageSize) // Math.сeil округляет число в большую сторону
-    let pages: Array<number> = []
-    let i: number
-    for (i = 1; i <= pageCount; i++) {
-        pages.push(i)
-    }  
     const mainImage= {
         backgroundImage: `url(${mainImg })`
       }
     return <div>   
-        <div className={style.musicContant}>
+        <div className={style.usersContant}>
             <div className={style.mainImageWrapper } style={mainImage}></div>          
-        </div>      
-        {pages.map(p => {
-            const currentPageClass = props.currentPage === p ? style.selectedPage : "";
-            return <span className={currentPageClass}
-                onClick={() => { props.onChangePage(p) }}>{p}</span>
-        })
-        }
-        {props.users.map(u => <div key={u.id} className={style.users} >
+        </div> 
+        <Paginator usersTotalCount={usersTotalCount} pageSize={pageSize} currentPage={currentPage} onChangePage={onChangePage}/>     
+       
+        {users.map(u => <div key={u.id} className={style.users} >
             <div className={style.userAvatar}>
                 <NavLink to= {"/profile/" + u.id}>
                   
@@ -45,10 +36,10 @@ export const Users = React.memo ((props: UsersPropsType) => {
                 </NavLink>
                
                 <div>{u.followed
-                 ?  <button  disabled={props.followingInProgress.some(id=>id ===u.id)}
-                             onClick={() => { props.unfollow(u.id) }}>Unfollow</button>
-                 :  <button  disabled={props.followingInProgress.some(id=>id ===u.id)}
-                             onClick={() => { props.follow(u.id) }}>Follow</button>} </div>
+                 ?  <button  disabled={followingInProgress.some(id=>id ===u.id)}
+                             onClick={() => { unfollow(u.id) }}>Unfollow</button>
+                 :  <button  disabled={followingInProgress.some(id=>id ===u.id)}
+                             onClick={() => { follow(u.id) }}>Follow</button>} </div>
             </div>
             <div className={style.userInfo}>
                 <h3>{u.name}</h3>

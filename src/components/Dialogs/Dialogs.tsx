@@ -16,7 +16,7 @@ type DialogsPropsType = {
 
 export const Dialogs = React.memo ((props:DialogsPropsType) => {
     let DialogElements = props.dialogs.map((dialog: DialogArrayPropsType) => {
-        return <Dialog id={dialog.id} name={dialog.name} />
+        return <Dialog id={dialog.id} name={dialog.name} key={dialog.id}/>
     })
     let MessageElements = props.messages.map((message: MessagesPropsType) => {
         return <Message textMessage={message.textMessage} id={message.id} />

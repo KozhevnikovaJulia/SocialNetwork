@@ -1,4 +1,4 @@
-const SEND_MESSAGE = "SEND-MESSAGE"
+const SEND_MESSAGE = "dialogs/SEND-MESSAGE"
 
 let initialState  = {
     dialogs: [
@@ -26,7 +26,7 @@ export const dialogsReducer = (state = initialState, action: ActionsType): Initi
         default: return state
     }    
 }
-export const sendMessageActionCreator = (newMessage: any) => ({type: "SEND-MESSAGE", newMessage} as const)
+export const sendMessageActionCreator = (newMessage: any) => ({type: SEND_MESSAGE, newMessage} as const)
 
 //types
 type ActionsType = ReturnType<typeof sendMessageActionCreator> 

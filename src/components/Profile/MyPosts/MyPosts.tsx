@@ -12,7 +12,7 @@ type MyPostsPropsType = {
 
 export const MyPosts = React.memo ((props:MyPostsPropsType) => {  
   let PostElements = props.posts.map ((post:PostsPropsType) => 
-  <Post message={post.message} likesCount={post.likesCount} id={post.id} />)
+  <Post message={post.message} likesCount={post.likesCount} id={post.id} key={post.id} />)
 
   const addPost = (value: any)=> {
     props.addPost(value.newPost)

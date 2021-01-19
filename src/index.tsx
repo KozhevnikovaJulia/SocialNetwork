@@ -5,18 +5,16 @@ import App from "./App"
 import * as serviceWorker from "./serviceWorker"
 import {store} from "./redux/StoreRedux"
 import {Provider} from "react-redux"
-import {Route, BrowserRouter} from "react-router-dom"
+import {HashRouter} from "react-router-dom"
 
 
 
 ReactDOM.render(
-    <React.StrictMode>
+    <HashRouter>
         <Provider store={store}>
-            <BrowserRouter>
-                <App />
-            </BrowserRouter>
+            <App />
         </Provider>
-    </React.StrictMode>,
+    </HashRouter>,
     document.getElementById('root')
 )
 serviceWorker.unregister()
