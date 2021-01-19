@@ -31,14 +31,14 @@ export const sendMessageActionCreator = (newMessage: any) => ({type: "SEND-MESSA
 //types
 type ActionsType = ReturnType<typeof sendMessageActionCreator> 
 
-type InitialStateType = typeof initialState
+export type InitialStateType = typeof initialState
 
-type MessagesType = {
+export type MessagesType = {
     id: number
     textMessage: string
 }
 
-type DialogArrayType = {
+export type DialogArrayType = {
     id: number
     name: string
 }

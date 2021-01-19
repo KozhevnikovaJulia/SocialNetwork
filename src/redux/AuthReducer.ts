@@ -1,5 +1,5 @@
-import {AuthAPI} from "../api/api";
-import {Dispatch} from "redux";
+import {AuthAPI} from "../api/api"
+import {Dispatch} from "redux"
 import {stopSubmit} from "redux-form"
 
 const SET_USER_DATA= "SET-USER-DATA"
@@ -72,7 +72,7 @@ export type DataType = {
     isAuth: boolean 
 }
 
-type InitialStateType = {
+export type InitialStateType = {
     id: number | null
     email: string | null    
    login: string | null

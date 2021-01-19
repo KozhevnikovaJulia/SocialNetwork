@@ -3,6 +3,7 @@ import {ProfileAPI} from "../api/api";
 const ADD_POST = "ADD-POST"
 const SET_USER_PROFILE = "SET-USER-PROFILE"
 const SET_STATUS = "SET-STATUS"
+const REMOVE_POST = "REMOVE-POST"
 
 let initialState = {
     posts: [
@@ -21,25 +22,31 @@ export const profileReducer = (state= initialState, action: ActionsType): Initia
             let newPstBody = action.newPost
             return {
                 ...state,
-                posts: [...state.posts, {id:7, likesCount: 5, message: newPstBody}]
+                posts: [...state.posts, { id: 7, likesCount: 5, message: newPstBody }]
             }
         }
-         case SET_USER_PROFILE: {
-            let stateCopy = {...state}
-            stateCopy.profile= action.profile          
+        case REMOVE_POST:
+            return {
+                ...state,
+                posts: state.posts.filter(p => p.id !== action.postId)
+            }
+        case SET_USER_PROFILE: {
+            let stateCopy = { ...state }
+            stateCopy.profile = action.profile
             return stateCopy
-         }
-         case SET_STATUS: {
-            let stateCopy = {...state}
-            stateCopy.status= action.status          
+        }
+        case SET_STATUS: {
+            let stateCopy = { ...state }
+            stateCopy.status = action.status
             return stateCopy
-         }
+        }
         default: return state
     }
 }
 export const addPost = (newPost: any) => ({type: "ADD-POST", newPost} as const)
 export const setUserProfile = (profile: any) => ({type: "SET-USER-PROFILE", profile } as const)
 export const setStatus = (status: string) => ({type: "SET-STATUS", status } as const)
+export const removePost = (postId: number) => ({type: "REMOVE-POST", postId} as const)
 
 export const getProfile = (userId: string) => 
 (dispatch: any) => {     
@@ -66,9 +73,9 @@ export const updateStatus = (status: string) =>
 }
 
 //types
-type InitialStateType = typeof initialState
+export type InitialStateType = typeof initialState
 
-export type ActionsType = ReturnType<typeof addPost> | ReturnType<typeof setUserProfile> | ReturnType<typeof setStatus>
+export type ActionsType = ReturnType<typeof addPost> | ReturnType<typeof setUserProfile> | ReturnType<typeof setStatus> | ReturnType<typeof removePost>
 
 export type PostsType = {
     id: number
