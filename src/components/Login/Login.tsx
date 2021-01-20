@@ -1,10 +1,10 @@
-import React from 'react';
-import { reduxForm, Field } from 'redux-form';
-import {required} from "../../util/Validator";
-import {Input} from "../../common/FormControl/FormControl";
-import {connect} from "react-redux";
-import {login} from "../../redux/AuthReducer";
-import { Redirect } from "react-router-dom";
+import React from "react"
+import { reduxForm, Field } from "redux-form"
+import {required} from "../../util/Validator"
+import {Input} from "../../common/FormControl/FormControl"
+import {connect} from "react-redux"
+import {login} from "../../redux/AuthReducer"
+import { Redirect } from "react-router-dom"
 import style from "../../common/FormControl/FormControl.module.css"
 
 

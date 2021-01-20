@@ -19,9 +19,7 @@ let redusers = combineReducers (
     }
 )
 
-type RedusersType = typeof redusers
-export type AppStateType = ReturnType<RedusersType>
-let state:AppStateType;
+export type AppStateType = ReturnType<typeof redusers>
 
 declare global {
     interface Window {

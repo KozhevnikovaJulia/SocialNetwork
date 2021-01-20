@@ -31,17 +31,6 @@ render = () => {
 }
 }
 
-// let mapStateToProps = (state: any) => {
-//     return {
-//         users: state.usersPage.users,
-//         pageSize: state.usersPage.pageSize,
-//         usersTotalCount: state.usersPage.usersTotalCount,
-//         currentPage: state.usersPage.currentPage,    
-//         isFetching: state.usersPage.isFetching,
-//         followingInProgress: state.usersPage.followingInProgress    
-//     }
-// }
-
 let mapStateToProps = (state: any) => {
     return {
         users: getUsersSuperSelector (state),

@@ -1,4 +1,3 @@
-import App from "../App";
 
 const ADD_POST = "ADD-POST"
 const CHANGE_POST = "CHANGE-POST"

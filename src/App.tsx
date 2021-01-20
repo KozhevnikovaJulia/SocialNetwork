@@ -1,7 +1,7 @@
 import React from "react"
 import {connect, ConnectedProps} from "react-redux"
 import "./App.css"
-import {Route} from "react-router-dom"
+import {Route, HashRouter} from "react-router-dom"
 import {NavBur} from "./components/NavBur/NavBur"
 import  HeaderContainer  from "./components/Header/HeaderContainer"
 import  ProfileContainer  from "./components/Profile/ProfileContainer"
@@ -17,9 +17,11 @@ import { initializeApp } from "./redux/AppReducer"
 import { Preloader } from "./common/Preloader/Preloader"
 import { RouteComponentProps, withRouter } from "react-router-dom"
 import { compose } from "redux"
+import {store} from "./redux/StoreRedux"
+import {Provider} from "react-redux"
 
 
-export class App extends React.PureComponent<AppPropsType > {
+export class App extends React.PureComponent<AppPropsType> {
   componentDidMount = () => {  
     this.props.initializeApp()         
 }  
@@ -66,8 +68,18 @@ type PropsFromRedux = ConnectedProps<typeof connector>
 
 type AppPropsType = RouteComponentProps & PropsFromRedux
 
-export default compose <React.ComponentType>(
+let AppContainer =  compose <React.ComponentType>(
   connect(mapStateToProps, {initializeApp} ),
   withRouter 
 )(App)
 
+
+export const MainApp = React.memo(() => {
+  return <HashRouter>
+    <Provider store={store}>
+      <AppContainer />
+    </Provider>
+  </HashRouter>
+
+}
+)
