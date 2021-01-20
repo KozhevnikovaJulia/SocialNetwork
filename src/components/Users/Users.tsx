@@ -1,10 +1,9 @@
 import React from "react"
 import style from "./Users.module.css"
 import { UserType } from "../../redux/UsersReducer"
-import userPhoto from "../../assets/image/iconfinder_user_male4_172628.png"
-import { NavLink } from "react-router-dom"
 import mainImg from "../../assets/image/pexels-kim-van-vuuren-1590159.jpg"
-import {Paginator} from "./Paginator"
+import {Paginator} from "../../common/Paginator/Paginator"
+import {User} from "./User"
 
 type UsersPropsType = {
     users: Array<UserType>
@@ -28,26 +27,7 @@ export const Users = React.memo (({users, pageSize, usersTotalCount, currentPage
         </div> 
         <Paginator usersTotalCount={usersTotalCount} pageSize={pageSize} currentPage={currentPage} onChangePage={onChangePage}/>     
        
-        {users.map(u => <div key={u.id} className={style.users} >
-            <div className={style.userAvatar}>
-                <NavLink to= {"/profile/" + u.id}>
-                  
-                    <img src={u.photos.small !=null ? u.photos.small : userPhoto} />
-                </NavLink>
-               
-                <div>{u.followed
-                 ?  <button  disabled={followingInProgress.some(id=>id ===u.id)}
-                             onClick={() => { unfollow(u.id) }}>Unfollow</button>
-                 :  <button  disabled={followingInProgress.some(id=>id ===u.id)}
-                             onClick={() => { follow(u.id) }}>Follow</button>} </div>
-            </div>
-            <div className={style.userInfo}>
-                <h3>{u.name}</h3>
-                <div className={style.city}>{"u.location.city"}</div>
-                <div className={style.country}>{"u.location.country"}</div>
-                <div>{u.status}</div>
-            </div>
-        </div>
+        {users.map(u => <User key={u.id} user={u} followingInProgress={followingInProgress} follow={follow} unfollow={unfollow}/>    
 
         )
         }
