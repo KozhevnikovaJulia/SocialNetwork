@@ -3,7 +3,7 @@ import style from "./News.module.css"
 import mainImg from "../../assets/image/sharon-mccutcheon--vgLTTWPesg-unsplash.jpg"
 
 
-export const News = React.memo(() => {
+const News = React.memo(() => {
     const mainImage= {
         backgroundImage: `url(${mainImg })`
       }
@@ -19,3 +19,4 @@ export const News = React.memo(() => {
     )
 }
 )
+export default News

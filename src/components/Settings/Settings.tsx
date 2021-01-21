@@ -3,7 +3,7 @@ import style from "./Settings.module.css"
 import mainImg from "../../assets/image/icons8-team-dhZtNlvNE8M-unsplash.jpg"
 
 
-export const Settings = React.memo (() => {
+const Settings = React.memo (() => {
     const mainImage= {
         backgroundImage: `url(${mainImg })`
       }
@@ -13,3 +13,4 @@ export const Settings = React.memo (() => {
         </div>
 )}
 )
+export default Settings

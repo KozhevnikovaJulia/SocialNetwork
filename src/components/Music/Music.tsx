@@ -3,7 +3,7 @@ import style from "./Music.module.css"
 import mainImg from "../../assets/image/pexels-moose-photos-1037992.jpg"
 
 
-export const Music = React.memo (() => {
+const Music = React.memo (() => {
     const mainImage= {
         backgroundImage: `url(${mainImg })`
       }
@@ -13,3 +13,4 @@ export const Music = React.memo (() => {
         </div>
 )}
 )
+export default Music
