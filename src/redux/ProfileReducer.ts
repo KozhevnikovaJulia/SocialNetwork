@@ -1,9 +1,5 @@
-import {ProfileAPI} from "../api/api";
-
-const ADD_POST = "profile/ADD-POST"
-const SET_USER_PROFILE = "profile/SET-USER-PROFILE"
-const SET_STATUS = "profile/SET-STATUS"
-const REMOVE_POST = "profile/REMOVE-POST"
+import {ProfileAPI} from "../api/api"
+import {ACTIONS_TYPE} from "./enumActionsType"
 
 let initialState = {
     posts: [
@@ -18,24 +14,24 @@ let initialState = {
 export const profileReducer = (state= initialState, action: ActionsType): InitialStateType => {
     
     switch (action.type) {
-        case ADD_POST: {
+        case ACTIONS_TYPE.ADD_POST: {
             let newPstBody = action.newPost
             return {
                 ...state,
                 posts: [...state.posts, { id: 7, likesCount: 5, message: newPstBody }]
             }
         }
-        case REMOVE_POST:
+        case ACTIONS_TYPE.REMOVE_POST:
             return {
                 ...state,
                 posts: state.posts.filter(p => p.id !== action.postId)
             }
-        case SET_USER_PROFILE: {
+        case ACTIONS_TYPE.SET_USER_PROFILE: {
             let stateCopy = { ...state }
             stateCopy.profile = action.profile
             return stateCopy
         }
-        case SET_STATUS: {
+        case ACTIONS_TYPE.SET_STATUS: {
             let stateCopy = { ...state }
             stateCopy.status = action.status
             return stateCopy
@@ -43,10 +39,10 @@ export const profileReducer = (state= initialState, action: ActionsType): Initia
         default: return state
     }
 }
-export const addPost = (newPost: any) => ({type: ADD_POST, newPost} as const)
-export const setUserProfile = (profile: any) => ({type: SET_USER_PROFILE, profile } as const)
-export const setStatus = (status: string) => ({type: SET_STATUS, status } as const)
-export const removePost = (postId: number) => ({type: REMOVE_POST, postId} as const)
+export const addPost = (newPost: any) => ({type: ACTIONS_TYPE.ADD_POST, newPost} as const)
+export const setUserProfile = (profile: any) => ({type: ACTIONS_TYPE.SET_USER_PROFILE, profile } as const)
+export const setStatus = (status: string) => ({type: ACTIONS_TYPE.SET_STATUS, status } as const)
+export const removePost = (postId: number) => ({type: ACTIONS_TYPE.REMOVE_POST, postId} as const)
 
 export const getProfile = (userId: string) => 
 async (dispatch: any) => {     

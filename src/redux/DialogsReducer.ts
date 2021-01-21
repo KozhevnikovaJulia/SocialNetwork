@@ -1,4 +1,4 @@
-const SEND_MESSAGE = "dialogs/SEND-MESSAGE"
+import {ACTIONS_TYPE} from "./enumActionsType"
 
 let initialState  = {
     dialogs: [
@@ -15,7 +15,7 @@ let initialState  = {
 
 export const dialogsReducer = (state = initialState, action: ActionsType): InitialStateType => {
     switch (action.type) {
-        case SEND_MESSAGE: {
+        case ACTIONS_TYPE.SEND_MESSAGE: {
             let bodyMessage = action.newMessage
             return {
                 ...state,
@@ -26,7 +26,7 @@ export const dialogsReducer = (state = initialState, action: ActionsType): Initi
         default: return state
     }    
 }
-export const sendMessageActionCreator = (newMessage: any) => ({type: SEND_MESSAGE, newMessage} as const)
+export const sendMessageActionCreator = (newMessage: any) => ({type: ACTIONS_TYPE.SEND_MESSAGE, newMessage} as const)
 
 //types
 type ActionsType = ReturnType<typeof sendMessageActionCreator> 

@@ -1,7 +1,6 @@
 import {Dispatch} from "redux"
 import { getMe, SetUserDataActionType } from "./AuthReducer"
-
-const INITIALIZED_SUCCESSED = "app/INITIALIZED-SUCCESSED"
+import {ACTIONS_TYPE} from "./enumActionsType"
 
 let initialState: InitialStateType = {
     isInitialized: false
@@ -11,7 +10,7 @@ export const appReducer = (state= initialState, action: ActionsType): InitialSta
     
     switch (action.type) {
         
-        case INITIALIZED_SUCCESSED: {
+        case ACTIONS_TYPE.INITIALIZED_SUCCESSED: {
             let stateCopy = {
                 ...state,
                 isInitialized: true
@@ -22,7 +21,7 @@ export const appReducer = (state= initialState, action: ActionsType): InitialSta
     }
 }
 
-export const InitializedSuccessedAC = () => ({ type: INITIALIZED_SUCCESSED} as const)
+export const InitializedSuccessedAC = () => ({ type: ACTIONS_TYPE.INITIALIZED_SUCCESSED} as const)
 
 export const initializeApp = () => async (dispatch: any) => {
     let promise = dispatch(getMe())

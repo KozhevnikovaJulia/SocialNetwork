@@ -1,12 +1,5 @@
-import {UserAPI} from "../api/api";
-
-const FOLLOW = "users/FOLLOW"
-const UNFOLLOW = "users/FUNFOLLOW"
-const SETUSERS = "users/FSET-USERS"
-const SETCURRENTPAGE = "users/FSET-CURRENT-PAGE"
-const SETUSERSTOTALCOUNT = "users/FSET-USERS-TOTAL-COUNT"
-const TOGGLEISFATCHING = "users/FTOGGLE-IS-FETCHING"
-const TOGGLEFOLLOWINGINPROGRESS = "users/FTOGGLE-FOLLOWING-IN-PROGRESS"
+import {UserAPI} from "../api/api"
+import {ACTIONS_TYPE} from "./enumActionsType"
 
 let initialState = {
     users: [ ] as Array<UserType>,
@@ -20,7 +13,7 @@ let initialState = {
 export const usersReducer = (state= initialState, action: ActionsType): InitialStateType => {
     
     switch (action.type) {
-        case FOLLOW: {
+        case ACTIONS_TYPE.FOLLOW: {
 
             let stateCopy = {
                 ...state,
@@ -33,7 +26,7 @@ export const usersReducer = (state= initialState, action: ActionsType): InitialS
             }
             return stateCopy
         }
-        case UNFOLLOW: {
+        case ACTIONS_TYPE.UNFOLLOW: {
             let stateCopy = {
                 ...state,
                 users: state.users.map(u => {
@@ -46,32 +39,32 @@ export const usersReducer = (state= initialState, action: ActionsType): InitialS
             }
             return stateCopy
         }
-        case SETUSERS: {
+        case ACTIONS_TYPE.SETUSERS: {
             let stateCopy = {
                 ...state,
                 users: action.users
             }
             return stateCopy
         }
-        case SETCURRENTPAGE: {
+        case ACTIONS_TYPE.SETCURRENTPAGE: {
             let stateCopy = {
                 ...state,
             currentPage: action.currentPage}   
             return stateCopy
         }
-        case SETUSERSTOTALCOUNT: {
+        case ACTIONS_TYPE.SETUSERSTOTALCOUNT: {
             let stateCopy = {
                 ...state,
             usersTotalCount: action.usersTotalCount}    
             return stateCopy
         }
-        case TOGGLEISFATCHING: {
+        case ACTIONS_TYPE.TOGGLEISFATCHING: {
             let stateCopy = {
                 ...state,
             isFetching: action.isFetching}    
             return stateCopy
         }
-        case TOGGLEFOLLOWINGINPROGRESS: {
+        case ACTIONS_TYPE.TOGGLEFOLLOWINGINPROGRESS: {
             let stateCopy = {
                 ...state,                 
                 followingInProgress: action.isFetching 
@@ -83,13 +76,13 @@ export const usersReducer = (state= initialState, action: ActionsType): InitialS
         default: return state
     }
 }
-export const followSuccess = (actionId: number) => ({type: FOLLOW, actionId}as const)
-export const unfollowSuccess = (actionId: number)  => ({type: UNFOLLOW, actionId}as const)
-export const setUsers = (users: Array<UserType>) => ({type: SETUSERS, users}as const)
-export const setCurrentPage = (currentPage:number) => ({type: SETCURRENTPAGE, currentPage}as const)
-export const setUsersTotalCount = (usersTotalCount:number)  => ({type: SETUSERSTOTALCOUNT, usersTotalCount}as const)
-export const toggleIsFetching = (isFetching:boolean)  => ({type: TOGGLEISFATCHING, isFetching}as const)
-export const toggleFollowingInProgress = (isFetching: boolean, userId: number)=> ({type: TOGGLEFOLLOWINGINPROGRESS, isFetching, userId}as const)
+export const followSuccess = (actionId: number) => ({type: ACTIONS_TYPE.FOLLOW, actionId}as const)
+export const unfollowSuccess = (actionId: number)  => ({type: ACTIONS_TYPE.UNFOLLOW, actionId}as const)
+export const setUsers = (users: Array<UserType>) => ({type: ACTIONS_TYPE.SETUSERS, users}as const)
+export const setCurrentPage = (currentPage:number) => ({type: ACTIONS_TYPE.SETCURRENTPAGE, currentPage}as const)
+export const setUsersTotalCount = (usersTotalCount:number)  => ({type: ACTIONS_TYPE.SETUSERSTOTALCOUNT, usersTotalCount}as const)
+export const toggleIsFetching = (isFetching:boolean)  => ({type: ACTIONS_TYPE.TOGGLEISFATCHING, isFetching}as const)
+export const toggleFollowingInProgress = (isFetching: boolean, userId: number)=> ({type: ACTIONS_TYPE.TOGGLEFOLLOWINGINPROGRESS, isFetching, userId}as const)
 
 
 export const getUsers = (currentPage: number, pageSize: number) =>

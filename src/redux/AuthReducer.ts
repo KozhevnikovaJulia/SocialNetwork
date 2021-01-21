@@ -1,8 +1,7 @@
 import {AuthAPI} from "../api/api"
 import {Dispatch} from "redux"
 import {stopSubmit} from "redux-form"
-
-const SET_USER_DATA= "auth/SET-USER-DATA"
+import {ACTIONS_TYPE} from "./enumActionsType"
 
 let initialState: InitialStateType = {
     id: null as number | null,
@@ -15,7 +14,7 @@ export const authReducer = (state= initialState, action: ActionsType): InitialSt
     
     switch (action.type) {
         
-        case SET_USER_DATA: {
+        case ACTIONS_TYPE.SET_USER_DATA: {
            let stateCopy = { ...state,
         ...action.data }               
       
@@ -25,7 +24,7 @@ export const authReducer = (state= initialState, action: ActionsType): InitialSt
     }
 }
 
-export const setUserData = ( id: number | null, email:string | null, login: string | null, isAuth: boolean) => ({type: SET_USER_DATA, data: {id, email, login, isAuth}}as const)
+export const setUserData = ( id: number | null, email:string | null, login: string | null, isAuth: boolean) => ({type: ACTIONS_TYPE.SET_USER_DATA, data: {id, email, login, isAuth}}as const)
 
 export const getMe = () => async (dispatch: Dispatch) => {
 
