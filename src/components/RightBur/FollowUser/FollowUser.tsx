@@ -1,8 +1,8 @@
 import React from "react"
-import style from "./Users.module.css"
+import style from "./FollowUser.module.css"
 import { NavLink } from "react-router-dom"
-import userPhoto from "../../assets/image/iconfinder_user_male4_172628.png"
-import { UserType } from "../../redux/UsersReducer"
+import userPhoto from "../../../assets/image/Голубой Круг Бизнес Логотип (3).png"
+import { UserType } from "../../../redux/UsersReducer"
 
 type FollowUserPropsType = {
     user: UserType 
@@ -11,27 +11,25 @@ type FollowUserPropsType = {
     unfollow: (userId: number)=> void 
 }
 
-export const FollowUser = React.memo(({ user, followingInProgress, follow, unfollow }:FollowUserPropsType) => {
+export const FollowUser = React.memo(({ user, followingInProgress, follow, unfollow }: FollowUserPropsType) => {
 
-    return <div  className={style.users} >
-        <div className={style.userAvatar}>
+    return <div className={style.followUser}>
+        <div className={style.followUserAvatar}>
             <NavLink to={"/profile/" + user.id}>
-
                 <img src={user.photos.small != null ? user.photos.small : userPhoto} />
             </NavLink>
+        </div>
 
+        <div className={style.followUserBody}>
+            {user.name}
             <div>{user.followed
                 ? <button disabled={followingInProgress.some(id => id === user.id)}
                     onClick={() => { unfollow(user.id) }}>Unfollow</button>
                 : <button disabled={followingInProgress.some(id => id === user.id)}
                     onClick={() => { follow(user.id) }}>Follow</button>} </div>
         </div>
-        <div className={style.userInfo}>
-            <h3>{user.name}</h3>
-            <div className={style.city}>{"u.location.city"}</div>
-            <div className={style.country}>{"u.location.country"}</div>
-            <div>{user.status}</div>
-        </div>
+
     </div>
+
 }
 )

@@ -26,12 +26,10 @@ export const Users = React.memo (({users, pageSize, usersTotalCount, currentPage
             <div className={style.mainImageWrapper } style={mainImage}></div>          
         </div> 
         <Paginator totalItemsCount={usersTotalCount} pageSize={pageSize} currentPage={currentPage} onChangePage={onChangePage} portionSize={10}/>     
-       
-        {users.map(u => <User key={u.id} user={u} followingInProgress={followingInProgress} follow={follow} unfollow={unfollow}/>
-       
-
-        )
-        }
+       <div className={style.users}>
+       {users.map(u => <User key={u.id} user={u} followingInProgress={followingInProgress} follow={follow} unfollow={unfollow}/> )}
+       </div>
+      
     </div>
 }
 )

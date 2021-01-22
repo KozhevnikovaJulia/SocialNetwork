@@ -44,12 +44,12 @@ export const setUserProfile = (profile: any) => ({type: ACTIONS_TYPE.SET_USER_PR
 export const setStatus = (status: string) => ({type: ACTIONS_TYPE.SET_STATUS, status } as const)
 export const removePost = (postId: number) => ({type: ACTIONS_TYPE.REMOVE_POST, postId} as const)
 
-export const getProfile = (userId: string) => 
+export const getProfile = (userId: number) => 
 async (dispatch: any) => {     
     let response = await ProfileAPI.getUserProfile(userId)           
          dispatch(setUserProfile(response.data))    
 }
-export const getStatus = (userId: string) => 
+export const getStatus = (userId: number) => 
 async (dispatch: any) => {     
     let response = await ProfileAPI.getStatus(userId)           
          dispatch(setStatus(response.data))    

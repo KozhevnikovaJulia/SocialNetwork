@@ -8,16 +8,30 @@ import { compose } from "redux"
 
 export class ProfileContainer extends React.PureComponent<ProfileContainerPropsType > {
     componentDidMount = () => {            
-        let userId = this.props.match.params.userId
+        let userId  = this.props.match.params.userId
         if (!userId) {
             userId =  this.props.authorizedUserId
             if (!userId) {
                 this.props.history.push("/login")
             }
         }  
-        this.props.getProfile(userId)    
-        this.props.getStatus(userId)     
+        this.props.getProfile(+userId)    
+        this.props.getStatus(+userId)     
     }
+    componentDidUpdate = (prevProps: any, prevState: any)=> {
+        if (this.props.match.params.userId !== prevProps.match.params.userId){
+            let userId  = this.props.match.params.userId
+        if (!userId) {
+            userId =  this.props.authorizedUserId
+            if (!userId) {
+                this.props.history.push("/login")
+            }
+        }  
+        this.props.getProfile(+userId)    
+        this.props.getStatus(+userId)    
+        }
+      
+          }
     render = () => {    
         return <div>
             <Profile {...this.props} profile={this.props.profile} updateStatus = {this.props.updateStatus} status={this.props.status}/>

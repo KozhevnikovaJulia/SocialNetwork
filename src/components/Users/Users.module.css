@@ -1,38 +1,51 @@
 .users {
-    display: grid;
-    grid-template-columns: 2fr 10fr;
-    margin: 20px;
+    display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
 }
-.userAvatar {
+
+.user {
+   width: 45%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
     padding: 20px;
-
-}
-.userAvatar img {
-   border-radius: 70px;
-   width: 100px;
-   height: 100px;
-
+       margin: 20px;
+    border-radius: 5px;
+    background-size:cover;
+    background-position: center
 }
 .userInfo {
-    position: relative;
-    padding: 20px;
-    border:  #ff4f81 2px solid;
-    font-size: large;
-    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 .userInfo h3 {
-    color: #ff4f81  ;
+color: #2aa3fb;
 }
-.city {
-    position: absolute;
-    top: 25px;
-    right: 25px;
+.userAvatar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
-.country {
-    position: absolute;
-    top: 50px;
-    right: 25px;
+.userAvatar button{
+    margin-top: 20px;
 }
+
+.user img {
+    height: 10px;
+    background-size:cover;
+    background-position: center
+}
+
+.userAvatar img {
+   border-radius: 70px;
+   width: 120px;
+   height: 120px;
+
+}
+
 
 .mainImageWrapper  {
     height: 250px;
@@ -40,3 +53,8 @@
     background-position: center
   }
  
+  @media screen and (max-width: 1299px){   
+    .user{   
+        width: 100%;
+  }
+  }

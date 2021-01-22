@@ -2,16 +2,18 @@ import React from "react"
 import style from "./Header.module.css"
 import {NavLink} from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faGlobeEurope} from "@fortawesome/free-solid-svg-icons"
 import { faConnectdevelop} from "@fortawesome/free-brands-svg-icons"
 import { faSearch} from "@fortawesome/free-solid-svg-icons"
+import logo from "../../assets/image/Голубой Круг Бизнес Логотип (5).png"
+import { profile } from "console"
+import userPhoto from "../../assets/image/Голубой Круг Бизнес Логотип (3).png"
 
-export const Header = React.memo ((props: {login: string | null; isAuth: boolean; logout: any}) => {
-  return (
+export const Header = React.memo ((props: {login: string | null; isAuth: boolean; logout: any; profile: any}) => {
+    return (
     <div className={style.header}>
       <div className={style.logo}>
         <a href="">
-          <FontAwesomeIcon icon={faConnectdevelop} size="4x"/> 
+        <img src={logo} />
           <span>Social Network</span>
         </a>
       </div>
@@ -23,9 +25,13 @@ export const Header = React.memo ((props: {login: string | null; isAuth: boolean
           <FontAwesomeIcon icon={faSearch} size="1x"/> 
           </a>
         </form>
-      </div>
+        </div>
 
-      <div className={style.loginBlock}>
+        <div className={style.loginBlock}>
+          {props.profile != null &&
+            <img src={props.profile.photos.small != null ? props.profile.photos.small : userPhoto} />
+          }
+
         {props.isAuth
           ? <div>{props.login}  <button onClick={props.logout}>Logout</button> </div>
           : <NavLink to="/login" activeClassName={style.active}>Login</NavLink>

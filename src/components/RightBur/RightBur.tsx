@@ -1,7 +1,7 @@
 import React from "react"
 import style from "./RightBur.module.css"
 import { UserType } from "../../redux/UsersReducer"
-import {FollowUser} from "../Users/FollowUser"
+import {FollowUser} from "./FollowUser/FollowUser"
 
 type RightBurPropsType = {
   users: Array<UserType>
@@ -19,7 +19,9 @@ export const RightBur = React.memo (({users, pageSize, usersTotalCount, currentP
 
   return (
       <nav className={style.rightBur}>
-     {users.map(u => <FollowUser key={u.id} user={u} followingInProgress={followingInProgress} follow={follow} unfollow={unfollow}/>      
+     {users
+     .filter(u => u.followed)
+     .map(u => <FollowUser key={u.id} user={u} followingInProgress={followingInProgress} follow={follow} unfollow={unfollow}/>      
 
         )
         }

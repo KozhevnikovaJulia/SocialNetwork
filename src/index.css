@@ -23,3 +23,20 @@ a {
   color: #2aa3fb;
   text-decoration: none;
 }
+button {
+  background: #50b5ff;
+  border-color: #50b5ff;
+  font-size: 14px;
+  border-radius: 5px;
+  color: #fff;
+  border: 1px solid transparent;
+    padding: .375rem .75rem;
+    line-height: 1.5;
+    font: 400 13.3333px Arial;
+    font-family: inherit;
+    cursor: pointer;
+}
+button:hover {
+  background: #2aa3fb;
+  border-color: #2aa3fb;
+}
