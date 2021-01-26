@@ -1,5 +1,6 @@
 export enum ACTIONS_TYPE {
   INITIALIZED_SUCCESSED = "socialNetwork/app/INITIALIZED-SUCCESSED",
+  SET_ERROR = "socialNetwork/app/SET_ERROR",
   SET_USER_DATA = "socialNetwork/auth/SET-USER-DATA",
   GET_CAPTCHA_URL_SUCCESS = "socialNetwork/auth/GET_CAPTCHA_URL_SUCCESS",
   SEND_MESSAGE = "socialNetwork/dialogs/SEND-MESSAGE",

@@ -1,5 +1,5 @@
 import React from "react"
-import style from "./NavBur.module.css"
+import style from "./NavBar.module.css"
 import {NavLink} from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCog} from "@fortawesome/free-solid-svg-icons"
@@ -10,7 +10,7 @@ import { faUsers} from "@fortawesome/free-solid-svg-icons"
 import { faAddressCard} from "@fortawesome/free-solid-svg-icons"
 
 
-export const NavBur = React.memo (() => {
+export const NavBar = React.memo (() => {
   return (
       <nav className={style.navBur}>
         <div className={style.item}>

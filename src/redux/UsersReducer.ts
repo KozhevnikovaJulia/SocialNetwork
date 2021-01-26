@@ -1,5 +1,6 @@
 import {UserAPI} from "../api/api"
 import {ACTIONS_TYPE} from "./enumActionsType"
+import { handleServerAppError,  handleServerNetworkError} from "../util/errorUtils"
 
 let initialState = {
     users: [ ] as Array<UserType>,
@@ -87,33 +88,44 @@ export const toggleFollowingInProgress = (isFetching: boolean, userId: number)=>
 
 export const getUsers = (currentPage: number, pageSize: number) =>
     async (dispatch: any) => {
-        dispatch(toggleIsFetching(true))
-        dispatch(setCurrentPage(currentPage))
-        let response = await UserAPI.getUsers(currentPage, pageSize)
-        dispatch(toggleIsFetching(false))
-        dispatch(setUsers(response.data.items))
-        dispatch(setUsersTotalCount(response.data.totalCount))
-
+        try {
+            dispatch(toggleIsFetching(true))
+            dispatch(setCurrentPage(currentPage))
+            let response = await UserAPI.getUsers(currentPage, pageSize)
+            dispatch(toggleIsFetching(false))
+            dispatch(setUsers(response.data.items))
+            dispatch(setUsersTotalCount(response.data.totalCount))
+        } catch (error) {
+            handleServerNetworkError(error, dispatch)
+        } 
     }
 
 export const follow = (userId: number) =>
     async (dispatch: any) => {
-        dispatch(toggleFollowingInProgress(true, userId))
-        let response = await UserAPI.postUserFollow(userId)            
-                if (response.data.resultCode === 0) {
-                    dispatch(followSuccess(userId))
-                }
-                dispatch(toggleFollowingInProgress(false, userId))            
+        try {
+            dispatch(toggleFollowingInProgress(true, userId))
+            let response = await UserAPI.postUserFollow(userId)            
+                    if (response.data.resultCode === 0) {
+                        dispatch(followSuccess(userId))
+                    }
+                    dispatch(toggleFollowingInProgress(false, userId))   
+        } catch (error) {
+            handleServerNetworkError(error, dispatch)
+        }                 
     }
 
 export const unfollow = (userId: number) =>
     async (dispatch: any) => {
-        dispatch(toggleFollowingInProgress(true, userId))
-        let response = await UserAPI.deleteUserFollow(userId)            
-                if (response.data.resultCode === 0) {
-                    dispatch(unfollowSuccess(userId))
-                }
-                dispatch(toggleFollowingInProgress(false, userId))            
+        try {
+            dispatch(toggleFollowingInProgress(true, userId))
+            let response = await UserAPI.deleteUserFollow(userId)            
+                    if (response.data.resultCode === 0) {
+                        dispatch(unfollowSuccess(userId))
+                    }
+                    dispatch(toggleFollowingInProgress(false, userId))   
+        } catch (error) {
+            handleServerNetworkError(error, dispatch)
+        }                
     }
 
    //types

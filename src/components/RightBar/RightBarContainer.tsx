@@ -1,6 +1,6 @@
 import React from "react"
-import { RightBur } from "./RightBur"
-import style from "./RightBur.module.css"
+import { RightBar } from "./RightBar"
+import style from "./RightBar.module.css"
 import {Preloader} from "../../common/Preloader/Preloader"
 import { getUsers, follow, unfollow } from "../../redux/UsersReducer"
 import {connect, ConnectedProps} from "react-redux"
@@ -8,7 +8,7 @@ import {getUsersSuperSelector , getPageSizeSelector, getUsersTotalCountSelector,
 
 
 
-export class RightBurContainer extends React.PureComponent<PropsFromRedux> {
+export class RightBarContainer extends React.PureComponent<PropsFromRedux> {
   componentDidMount = () => {
       this.props.getUsers(this.props.currentPage, this.props.pageSize)       
   }  
@@ -20,7 +20,7 @@ render = () => {
       
       {this.props.isFetching ? <Preloader/> : null}
       
-      <RightBur 
+      <RightBar 
   users= {this.props.users}
   pageSize= {this.props.pageSize}
   usersTotalCount= {this.props.usersTotalCount}
@@ -51,4 +51,4 @@ type PropsFromRedux = ConnectedProps<typeof connector>
 
 export default connect (mapStateToProps,
   { getUsers, follow, unfollow } )
-   (RightBurContainer)
+   (RightBarContainer)

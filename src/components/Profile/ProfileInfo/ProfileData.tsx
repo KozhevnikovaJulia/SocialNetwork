@@ -14,8 +14,6 @@ export const ProfileData = React.memo((props: ProfileDataPropsType) => {
   const eee = ()=> {
     alert("hello")
   }
-
-  debugger
   return (
     
     <div className={style.profileData}>

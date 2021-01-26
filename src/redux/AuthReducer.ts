@@ -2,6 +2,7 @@ import {AuthAPI, SecurityAPI} from "../api/api"
 import {Dispatch} from "redux"
 import {stopSubmit} from "redux-form"
 import {ACTIONS_TYPE} from "./enumActionsType"
+import { handleServerAppError,  handleServerNetworkError} from "../util/errorUtils"
 
 let initialState: InitialStateType = {
     id: null as number | null,
@@ -46,31 +47,43 @@ export const getMe = () => async (dispatch: Dispatch) => {
 
 export const login = (email: string, password: string, rememberMe: boolean, captcha: string) =>
     async (dispatch: any) => {
-        let response = await AuthAPI.login(email, password, rememberMe, captcha)
-        if (response.data.resultCode === 0) {
-            dispatch(getMe())
-        } else {
-            if (response.data.resultCode === 10) {
-                dispatch(getCaptchaUrl ())
+        try {
+            let response = await AuthAPI.login(email, password, rememberMe, captcha)
+            if (response.data.resultCode === 0) {
+                dispatch(getMe())
+            } else {
+                if (response.data.resultCode === 10) {
+                    dispatch(getCaptchaUrl())
+                }
+                let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error"
+                dispatch(stopSubmit("login", { _error: message }))
             }
-            let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error"
-            dispatch(stopSubmit("login", { _error: message }))
+        } catch (error) {
+            handleServerNetworkError(error, dispatch)
         }
     }
 
 export const logout = () =>
     async (dispatch: any) => {
-        const response = await AuthAPI.logout()
-        if (response.data.resultCode === 0) {
-            dispatch(setUserData(null, null, null, false))
+        try {
+            const response = await AuthAPI.logout()
+            if (response.data.resultCode === 0) {
+                dispatch(setUserData(null, null, null, false))
+            }
+        } catch (error) {
+            handleServerNetworkError(error, dispatch)
         }
     }
 
-    export const getCaptchaUrl = () =>
+export const getCaptchaUrl = () =>
     async (dispatch: any) => {
-        const response = await SecurityAPI.getCaptchaUrl ()
-        const captchaUrl = response.data.url      
-        dispatch(getCaptchaUrlSuccess(captchaUrl))   
+        try {
+            const response = await SecurityAPI.getCaptchaUrl()
+            const captchaUrl = response.data.url
+            dispatch(getCaptchaUrlSuccess(captchaUrl))
+        } catch (error) {
+            handleServerNetworkError(error, dispatch)
+        }
     }
 
 //types

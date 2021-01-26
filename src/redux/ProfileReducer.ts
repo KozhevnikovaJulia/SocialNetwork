@@ -1,5 +1,6 @@
 import {ProfileAPI} from "../api/api"
 import {ACTIONS_TYPE} from "./enumActionsType"
+import { handleServerAppError,  handleServerNetworkError} from "../util/errorUtils"
 
 let initialState = {
     posts: [
@@ -54,35 +55,58 @@ export const savePhotoSuccess = (photos: any) => ({type: ACTIONS_TYPE.SAVE_PHOTO
 
 export const getProfile = (userId: number) => 
 async (dispatch: any) => {     
-    let response = await ProfileAPI.getUserProfile(userId)           
-         dispatch(setUserProfile(response.data))    
+    try {
+        let response = await ProfileAPI.getUserProfile(userId)           
+        dispatch(setUserProfile(response.data)) 
+    } catch (error) {
+        handleServerNetworkError(error, dispatch)
+    }       
 }
+
 export const getStatus = (userId: number) => 
-async (dispatch: any) => {     
-    let response = await ProfileAPI.getStatus(userId)           
-         dispatch(setStatus(response.data))    
+async (dispatch: any) => {    
+    try {
+        let response = await ProfileAPI.getStatus(userId)           
+        dispatch(setStatus(response.data)) 
+    } catch (error) {
+        handleServerNetworkError(error, dispatch)
+    }       
 }
+
 export const updateStatus = (status: string) => 
-async (dispatch: any) => {     
-    let response = await ProfileAPI.updateStatus(status)             
-            if (response.data.resultCode === 0){
-                dispatch(setStatus(status))            }                    
-    
+    async (dispatch: any) => {
+        try {
+            let response = await ProfileAPI.updateStatus(status)
+            if (response.data.resultCode === 0) {
+                dispatch(setStatus(status))
+            }
+        } catch (error) {
+            handleServerNetworkError(error, dispatch)
+        }    
 }
-export const savePhoto = (file: any) => 
-async (dispatch: any) => {     
-    let response = await ProfileAPI.savePhoto(file)             
-            if (response.data.resultCode === 0){
-                dispatch(savePhotoSuccess (response.data.data.photos))            }                    
-    
-}
+
+export const savePhoto = (file: any) =>
+    async (dispatch: any) => {
+        try {
+            let response = await ProfileAPI.savePhoto(file)
+            if (response.data.resultCode === 0) {
+                dispatch(savePhotoSuccess(response.data.data.photos))
+            }
+        } catch (error) {
+            handleServerNetworkError(error, dispatch)
+        }
+    }
+
 export const saveProfile = (profile: any) => 
 async (dispatch: any) => {     
-    let response = await ProfileAPI.saveProfile(profile)             
-            if (response.data.resultCode === 0){
-                // dispatch(savePhotoSuccess (response.data.data.photos))         
-               }                    
-    
+    try {
+        let response = await ProfileAPI.saveProfile(profile)             
+        if (response.data.resultCode === 0){
+            // dispatch(savePhotoSuccess (response.data.data.photos))         
+           }            
+    } catch (error) {
+        handleServerNetworkError(error, dispatch)
+    }            
 }
 
 //types

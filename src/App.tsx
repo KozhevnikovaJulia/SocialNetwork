@@ -2,21 +2,20 @@ import React from "react"
 import {connect, ConnectedProps} from "react-redux"
 import "./App.css"
 import {Route, HashRouter, Switch} from "react-router-dom"
-import {NavBur} from "./components/NavBur/NavBur"
+import {NavBar} from "./components/NavBar/NavBar"
 import HeaderContainer from "./components/Header/HeaderContainer"
 import ProfileContainer from "./components/Profile/ProfileContainer"
 import UsersContainer from "./components/Users/UsersContainer"
-import RightBurContainer from "./components//RightBur/RightBurContainer"
+import RightBarContainer from "./components/RightBar/RightBarContainer"
 import { AppStateType } from "./redux/StoreRedux"
 import { initializeApp } from "./redux/AppReducer"
 import { Preloader } from "./common/Preloader/Preloader"
-import { RouteComponentProps, withRouter } from "react-router-dom"
+import { RouteComponentProps, withRouter, Redirect } from "react-router-dom"
 import { compose } from "redux"
 import { store } from "./redux/StoreRedux"
 import { Provider } from "react-redux"
 import { withSuspense } from "./hoc/withSuspense"
-import {MyPostsContainer} from "./components/Profile/MyPosts/MyPostsContainer"
-import {ProfileInfo} from "./components/Profile/ProfileInfo/ProfileInfo"
+import { ErrorSnackBar } from "./components/ErrorSnackBar/ErrorSnackBar"
 
 const DialogsContainer = React.lazy(() => import("./components/Dialogs/DialogsContainer")) // Ленивая загрузка
 const Settings = React.lazy(() => import("./components/Settings/Settings"))
@@ -34,21 +33,23 @@ export class App extends React.PureComponent<AppPropsType> {
     }
     return (
       <div className="app-wrapper">
+        
         <HeaderContainer />
         <div className="app-body">
-          <NavBur />
-          <RightBurContainer />
+        <ErrorSnackBar />
+          <NavBar />
+          <RightBarContainer />
           <div className="app-content">
             <Switch>
-              <Route path="/profile/:userId?" render={() =>
-                <ProfileContainer />} />
+              <Route exact path="/" render={() => <Redirect to={"/profile"} />} />
+              <Route path="/profile/:userId?" render={() => <ProfileContainer />}/>
               <Route path="/dialogs" render={withSuspense(DialogsContainer)} />
-              <Route path="/users" render={() =>
-                <UsersContainer />} />
+              <Route path="/users" render={() => <UsersContainer />} />
               <Route path="/music" render={withSuspense(Music)} />
               <Route path="/settings" render={withSuspense(Settings)} />
               <Route path="/login" render={withSuspense(Login)} />
               <Route path="/news" render={withSuspense(News)} />
+              <Route path="*" render={() => <div>404 NOT FOUND</div>}/>
             </Switch>
           </div>
         </div >

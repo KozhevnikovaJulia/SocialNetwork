@@ -1,9 +1,9 @@
 import React from "react"
-import style from "./RightBur.module.css"
+import style from "./RightBar.module.css"
 import { UserType } from "../../redux/UsersReducer"
 import {FollowUser} from "./FollowUser/FollowUser"
 
-type RightBurPropsType = {
+type RightBarPropsType = {
   users: Array<UserType>
   pageSize: number
   usersTotalCount: number
@@ -15,7 +15,7 @@ type RightBurPropsType = {
 }
 
 
-export const RightBur = React.memo (({users, pageSize, usersTotalCount, currentPage, onChangePage, followingInProgress, follow, unfollow}: RightBurPropsType) => {
+export const RightBar = React.memo (({users, pageSize, usersTotalCount, currentPage, onChangePage, followingInProgress, follow, unfollow}: RightBarPropsType) => {
 
   return (
       <nav className={style.rightBur}>

@@ -49,9 +49,11 @@ const initialGlobalState = {
         isFetching: true,
         followingInProgress: [1,2]
     },
-    // form: formReducer,
-    
-    app: { isInitialized: false },
+
+    app: {
+        isInitialized: false,
+        error: null
+    },
     auth: {
         id: null as number | null,
         email: null as string | null,
