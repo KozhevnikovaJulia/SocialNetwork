@@ -14,3 +14,7 @@ border: 2px solid red
   flex-direction: column;
   justify-content: space-between;
 }
+
+.loginForm img{
+width: 160px;
+}

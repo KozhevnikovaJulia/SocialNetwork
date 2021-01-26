@@ -28,8 +28,8 @@ export const Header = React.memo ((props: {login: string | null; isAuth: boolean
         </div>
 
         <div className={style.loginBlock}>
-          {props.profile != null &&
-            <img src={props.profile.photos.small != null ? props.profile.photos.small : userPhoto} />
+          {props.profile.photos != null &&
+            <img src={props.profile.photos.small || userPhoto} />
           }
 
         {props.isAuth

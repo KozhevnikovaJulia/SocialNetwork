@@ -4,6 +4,7 @@ import { UserType } from "../../redux/UsersReducer"
 import mainImg from "../../assets/image/pexels-kim-van-vuuren-1590159.jpg"
 import {Paginator} from "../../common/Paginator/Paginator"
 import {User} from "./User"
+import { MainImageWrapper } from "../../common/MainImageWrapper/MainImageWrapper"
 
 type UsersPropsType = {
     users: Array<UserType>
@@ -23,7 +24,7 @@ export const Users = React.memo (({users, pageSize, usersTotalCount, currentPage
       }
     return <div>   
         <div className={style.usersContant}>
-            <div className={style.mainImageWrapper } style={mainImage}></div>          
+            <MainImageWrapper mainImage={mainImage} title="Users"/>          
         </div> 
         <Paginator totalItemsCount={usersTotalCount} pageSize={pageSize} currentPage={currentPage} onChangePage={onChangePage} portionSize={10}/>     
        <div className={style.users}>

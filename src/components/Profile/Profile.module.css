@@ -1,14 +1,54 @@
 .profileContant {
-
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .profileContant img {
   width: 100%;
 }
 .ava img{
-  width: 30%; 
+  width: 20%; 
+  display: inline-block;
+  border: 2px solid white;
+  border-radius: 250px;
 }
-.mainImageWrapper{
-  height: 250px;
-  background-size:cover;
-  background-position: center
+
+.ava {
+  /* position: absolute;
+  top: 40%;
+  left: 0;
+  right: 0; */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+    justify-content: space-between;
+    align-items: center;    
 }
+.profileInfo {
+ display: flex; 
+ flex-direction: column;
+ justify-content: space-between;
+}
+  .profileBur {  
+    background-color: #1e2745;  
+    border-radius: 5px;
+    display: flex;
+    z-index: 999;
+  }
+  .item a {
+    text-decoration: none; 
+    color: #8c91b6;
+    font-size: 14px;   
+    position: relative;
+    padding: 15px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 5px;
+  }
+  .item a.active {
+    color: #2aa3fb;
+    background-color: #29324f;
+    border-radius: 5px;
+  }

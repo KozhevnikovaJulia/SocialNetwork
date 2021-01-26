@@ -9,9 +9,9 @@
 .app-content {
     background-color:#182039;
     height: 100vh;
-    margin-left: 250px;
-    margin-right: 250px;
-    margin-top: 75px;
+    margin-left: 270px;
+    margin-right: 270px;
+    margin-top: 95px;
     width: calc(100% - 500px);
     }
 
@@ -22,15 +22,5 @@
         margin: 0;
   }
   }
-    /* @media screen and (max-width: 1360px){
-        .contant  {
-            margin-left: 90px;
-            width: calc(100% - 90px);
-        }}
-    @media screen and (max-width: 1020px){
-        .contant {
-            margin-left: 0;
-            width: 100%;
-        }} */
 
 

@@ -26,7 +26,7 @@ const initialGlobalState = {
             { id: 2, message: "Hi", likesCount: 4 },
             { id: 3, message: "Hello", likesCount: 5 }
         ] as Array<PostsType>,
-        profile: null,
+        profile: {},
         status: ""
     },
     dialogsPage: {
@@ -56,7 +56,8 @@ const initialGlobalState = {
         id: null as number | null,
         email: null as string | null,
         login: "Julia" as string | null,
-        isAuth: false
+        isAuth: false,
+        captchaUrl: null
     }
 };
 

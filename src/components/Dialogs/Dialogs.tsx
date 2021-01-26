@@ -5,6 +5,7 @@ import {Message} from "./Message/Message";
 import {MessagesPropsType, DialogArrayPropsType} from "../../redux/Store";
 import {AddMessageReduxForm} from "../AddMessageForm/AddMessageForm";
 import mainImg from "../../assets/image/pexels-jill-wellington-3969250.jpg"
+import { MainImageWrapper } from "../../common/MainImageWrapper/MainImageWrapper";
 
 type DialogsPropsType = {
     sendMessage: (newMessage: any)=> void
@@ -31,7 +32,7 @@ export const Dialogs = React.memo ((props:DialogsPropsType) => {
     return (
         <div className={style.dialogsContant}>
 
-            <div className={style.mainImageWrapper} style={mainImage}></div>
+            <MainImageWrapper mainImage ={mainImage} title="Dialogs"/>
             <div className={style.dialogsWrapper}>
                 <div className={style.dialogs}>
                     {DialogElements}
