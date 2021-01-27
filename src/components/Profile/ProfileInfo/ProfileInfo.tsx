@@ -25,7 +25,9 @@ export const ProfileInfo = React.memo((props: ProfileInfoPropsType) => {
     <div>
 
       {editMode ? <ProfileDataForm  initialValues ={props.profile} onSubmit={onSubmit}/>
-                :  <ProfileData profile={props.profile} isOwner={props.isOwner} activateEditMode={()=> {setEditMode(true)}}/> }   
+                :  <ProfileData profile={props.profile}
+                               isOwner={props.isOwner}
+                               activateEditMode={()=> {setEditMode(true)}}/> }   
       
     </div>
   )

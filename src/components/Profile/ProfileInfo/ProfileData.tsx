@@ -11,6 +11,7 @@ type ProfileDataPropsType = {
 
 
 export const ProfileData = React.memo((props: ProfileDataPropsType) => {
+  
   const eee = ()=> {
     alert("hello")
   }

@@ -23,21 +23,23 @@ export const Profile = React.memo ((props:ProfilePropsType) => {
         backgroundImage: `url(${mainImg })`
       }
       let { path, url } = useRouteMatch()
+     
     return <div className={style.profileContant}>
         <MainImageWrapper mainImage={mainImage} title="Profile" />
 
-        <ProfileAva isOwner={props.isOwner} profile={props.profile} savePhoto={props.savePhoto}
-            status={props.status}
-            updateStatus={props.updateStatus} />
+        <ProfileAva isOwner={props.isOwner}
+                    profile={props.profile}
+                    savePhoto={props.savePhoto}
+                    status={props.status}
+                    updateStatus={props.updateStatus} />
 
         <ProfileBur />
 
         <Switch>      
             <Route path={`${path}/aboutMe`} render={() =>
                 <ProfileInfo isOwner={props.isOwner}
-                    profile={props.profile}
-                    saveProfile={props.saveProfile}
-                />} />
+                             profile={props.profile}
+                             saveProfile={props.saveProfile} />} />
             <Route path={`${path}/myPosts`} render={() =>
                 <MyPostsContainer />} />
         </Switch>

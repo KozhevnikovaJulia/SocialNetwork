@@ -11,6 +11,8 @@ export class ProfileContainer extends React.PureComponent<ProfileContainerPropsT
         let userId  = this.props.match.params.userId
         if (!userId) {
             userId =  this.props.authorizedUserId
+            this.props.history.push(`/profile/${userId}`)
+
             if (!userId) {
                 return this.props.history.push("/login")
             }
@@ -28,13 +30,15 @@ export class ProfileContainer extends React.PureComponent<ProfileContainerPropsT
             this.refrashProfile()
         }
     }
-    render = () => {    
+
+    
+    render = () => {  
         return <div>
             <Profile {...this.props} profile={this.props.profile}
                                      updateStatus = {this.props.updateStatus}
                                      status={this.props.status}
                                      savePhoto={this.props.savePhoto}
-                                     isOwner = {!this.props.match.params.userId}
+                                    isOwner ={!!this.props.authorizedUserId}
                                      saveProfile = {this.props.saveProfile}/>
         </div>
     }
@@ -44,7 +48,6 @@ let mapStateToProps = (state: any) => {
     return {
         profile: state.profilePage.profile, 
         status: state.profilePage.status,  
-        isAuth: state.auth.isAuth,
         authorizedUserId:  state.auth.id   
     }
 }

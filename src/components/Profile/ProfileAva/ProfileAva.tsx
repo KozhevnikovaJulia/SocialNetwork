@@ -11,7 +11,6 @@ type ProfileAvaPropsType = {
   updateStatus: (status: string)=> void
   savePhoto: (file: any) => void
   isOwner: boolean
-
 }
 
 export const ProfileAva = React.memo((props: ProfileAvaPropsType) => {

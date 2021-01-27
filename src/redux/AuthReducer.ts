@@ -36,13 +36,15 @@ export const setUserData = ( id: number | null, email:string | null, login: stri
 export const getCaptchaUrlSuccess = ( captchaUrl: string | null) => ({type: ACTIONS_TYPE.GET_CAPTCHA_URL_SUCCESS, captchaUrl}as const)
 
 export const getMe = () => async (dispatch: Dispatch) => {
-
-    let response = await AuthAPI.getAuthMe()
-    if (response.data.resultCode === 0) {
-        let { id, email, login, isAuth } = response.data.data
-        dispatch(setUserData(id, email, login, true))
+    try {
+        let response = await AuthAPI.getAuthMe()
+        if (response.data.resultCode === 0) {
+            let { id, email, login, isAuth } = response.data.data
+            dispatch(setUserData(id, email, login, true))
+        }
+    } catch (error) {
+        handleServerNetworkError(error, dispatch)
     }
-
 }
 
 export const login = (email: string, password: string, rememberMe: boolean, captcha: string) =>
