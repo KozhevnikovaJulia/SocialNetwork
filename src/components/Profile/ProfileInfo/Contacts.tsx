@@ -2,8 +2,8 @@ import React from "react"
 import style from "../Profile.module.css"
 
 type ContactsPropsType = {  
-    contactTitle: any
-    contactValue: any
+    contactTitle: string
+    contactValue: string
     
 }
 

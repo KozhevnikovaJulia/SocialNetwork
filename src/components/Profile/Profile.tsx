@@ -6,19 +6,30 @@ import {ProfileType} from "../../redux/ProfileReducer"
 import {ProfileBur} from "./ProfileBur"
 import {MainImageWrapper} from "../../common/MainImageWrapper/MainImageWrapper"
 import mainImg from "../../assets/image/pexels-moose-photos-1037995.jpg"
-import {Route, useRouteMatch, Switch} from "react-router-dom"
+import {Route, useRouteMatch, Switch, useParams} from "react-router-dom"
 import {ProfileAva} from "./ProfileAva/ProfileAva"
+
+
 
 type ProfilePropsType = {    
     profile: ProfileType
     status: string
     updateStatus: (status: string) => void
     savePhoto: (file: any) => void
-    isOwner: boolean
+    authorizedUserId: number
     saveProfile:(formData: any) => void
 }
 
 export const Profile = React.memo ((props:ProfilePropsType) => {     
+
+    const { userId } = useParams<{userId: string}>()
+
+    let isOwner = false
+    if (+userId === props.authorizedUserId) {
+           isOwner = true 
+    }
+
+
     const mainImage= {
         backgroundImage: `url(${mainImg })`
       }
@@ -27,7 +38,7 @@ export const Profile = React.memo ((props:ProfilePropsType) => {
     return <div className={style.profileContant}>
         <MainImageWrapper mainImage={mainImage} title="Profile" />
 
-        <ProfileAva isOwner={props.isOwner}
+        <ProfileAva isOwner={isOwner}
                     profile={props.profile}
                     savePhoto={props.savePhoto}
                     status={props.status}
@@ -37,7 +48,7 @@ export const Profile = React.memo ((props:ProfilePropsType) => {
 
         <Switch>      
             <Route path={`${path}/aboutMe`} render={() =>
-                <ProfileInfo isOwner={props.isOwner}
+                <ProfileInfo isOwner={isOwner}
                              profile={props.profile}
                              saveProfile={props.saveProfile} />} />
             <Route path={`${path}/myPosts`} render={() =>

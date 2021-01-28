@@ -38,8 +38,9 @@ export class ProfileContainer extends React.PureComponent<ProfileContainerPropsT
                                      updateStatus = {this.props.updateStatus}
                                      status={this.props.status}
                                      savePhoto={this.props.savePhoto}
-                                    isOwner ={!!this.props.authorizedUserId}
-                                     saveProfile = {this.props.saveProfile}/>
+                                     authorizedUserId ={this.props.authorizedUserId}
+                                     saveProfile = {this.props.saveProfile}
+                                     />
         </div>
     }
 }

@@ -1,6 +1,7 @@
 import {ProfileAPI} from "../api/api"
 import {ACTIONS_TYPE} from "./enumActionsType"
 import { handleServerAppError,  handleServerNetworkError} from "../util/errorUtils"
+import {stopSubmit} from "redux-form"
 
 let initialState = {
     posts: [
@@ -97,13 +98,20 @@ export const savePhoto = (file: any) =>
         }
     }
 
-export const saveProfile = (profile: any) => 
-async (dispatch: any) => {     
+export const saveProfile = (profile: ProfileType) => 
+
+async (dispatch: any, getState: any) => {  
+    debugger
+    let  userId = getState().auth.id
     try {
         let response = await ProfileAPI.saveProfile(profile)             
         if (response.data.resultCode === 0){
-            // dispatch(savePhotoSuccess (response.data.data.photos))         
-           }            
+            dispatch(getProfile (userId))         
+        } else {           
+            let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error"
+            dispatch(stopSubmit('profileDataForm', { _error: message }))
+            return Promise.reject(response.data.messages[0] )
+        }     
     } catch (error) {
         handleServerNetworkError(error, dispatch)
     }            
@@ -130,6 +138,7 @@ export type ProfileType = {
 lookingForAJob: boolean
 lookingForAJobDescription: string
 fullName: string
+aboutMe: string
 contacts: ContactsType
 photos: PhotosType
 }
