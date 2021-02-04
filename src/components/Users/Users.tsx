@@ -1,10 +1,11 @@
 import React from "react"
 import style from "./Users.module.css"
 import { UserType } from "../../redux/UsersReducer"
-import mainImg from "../../assets/image/pexels-kim-van-vuuren-1590159.jpg"
+import mainImg from "../../assets/image/houses.jpg"
 import {Paginator} from "../../common/Paginator/Paginator"
 import {User} from "./User"
 import { MainImageWrapper } from "../../common/MainImageWrapper/MainImageWrapper"
+import { SearchReduxForm, SearchFormValuesType } from "../Users/SearchForm"
 
 type UsersPropsType = {
     users: Array<UserType>
@@ -22,10 +23,15 @@ export const Users = React.memo (({users, pageSize, usersTotalCount, currentPage
     const mainImage= {
         backgroundImage: `url(${mainImg })`
       }
+      const onSubmit = (formData:SearchFormValuesType )=> {
+        // props.search(formData.term)
+        alert (formData.term)
+          }
     return <div>   
         <div className={style.usersContant}>
             <MainImageWrapper mainImage={mainImage} title="Users"/>          
         </div> 
+        <SearchReduxForm onSubmit ={onSubmit}  />
         <Paginator totalItemsCount={usersTotalCount} pageSize={pageSize} currentPage={currentPage} onChangePage={onChangePage} portionSize={10}/>     
        <div className={style.users}>
        {users.map(u => <User key={u.id} user={u} followingInProgress={followingInProgress} follow={follow} unfollow={unfollow}/> )}

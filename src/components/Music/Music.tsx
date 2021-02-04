@@ -1,7 +1,7 @@
 import React from "react"
 import style from "./Music.module.css"
 import {MainImageWrapper} from "../../common/MainImageWrapper/MainImageWrapper"
-import mainImg from "../../assets/image/pexels-moose-photos-1037992.jpg"
+import mainImg from "../../assets/image/music.jpg"
 
 
 const Music = React.memo (() => {

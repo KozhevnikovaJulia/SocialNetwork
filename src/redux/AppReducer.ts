@@ -34,7 +34,6 @@ export const initializeApp = () => async (dispatch: any) => {
     let response = await Promise.all ([promise])   
         dispatch(InitializedSuccessedAC())   
 }
-
 //types
 
 export type InitialStateType = {

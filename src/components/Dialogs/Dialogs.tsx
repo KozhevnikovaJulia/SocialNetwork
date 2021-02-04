@@ -4,7 +4,7 @@ import {Dialog} from "./Dialog/Dialog";
 import {Message} from "./Message/Message";
 import {MessagesPropsType, DialogArrayPropsType} from "../../redux/Store";
 import {AddMessageReduxForm} from "../AddMessageForm/AddMessageForm";
-import mainImg from "../../assets/image/pexels-jill-wellington-3969250.jpg"
+import mainImg from "../../assets/image/candies.jpg"
 import { MainImageWrapper } from "../../common/MainImageWrapper/MainImageWrapper";
 
 type DialogsPropsType = {

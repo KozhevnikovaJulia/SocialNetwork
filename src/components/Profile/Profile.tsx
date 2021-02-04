@@ -5,7 +5,7 @@ import {ProfileInfo} from "./ProfileInfo/ProfileInfo"
 import {ProfileType} from "../../redux/ProfileReducer"
 import {ProfileBur} from "./ProfileBur"
 import {MainImageWrapper} from "../../common/MainImageWrapper/MainImageWrapper"
-import mainImg from "../../assets/image/pexels-moose-photos-1037995.jpg"
+import mainImg from "../../assets/image/lamp.jpg"
 import {Route, useRouteMatch, Switch, useParams} from "react-router-dom"
 import {ProfileAva} from "./ProfileAva/ProfileAva"
 

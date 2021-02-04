@@ -1,7 +1,7 @@
 import React from "react"
 import style from "./News.module.css"
 import {MainImageWrapper} from "../../common/MainImageWrapper/MainImageWrapper"
-import mainImg from "../../assets/image/sharon-mccutcheon--vgLTTWPesg-unsplash.jpg"
+import mainImg from "../../assets/image/lamp.jpg"
 
 
 const News = React.memo(() => {

@@ -23,19 +23,6 @@
 .logo img {
   height: 70px;
 }
-.searchForm {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 350px;
-  height: 40px;
-  padding: 5px 15px 5px 15px;
-  border-radius: 10px;
-  color: #8c91b6;
-  border: none;
-  background: #29324f;
-  
-}
 a {
   display: flex;
   align-items: flex-start;  
@@ -66,16 +53,3 @@ span {
 .loginBlock button {
   margin-left: 20px;
 }
-.searchInput {
-  border: none;
-  background: #29324f;
-  width: 100%;
-  
-}
-input::placeholder {
-  margin: 0;
-  color: #8c91b6;
-  font-size: 14px;
-  font-family: 'Poppins', sans-serif;
-}
-

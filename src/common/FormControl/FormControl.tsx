@@ -11,13 +11,13 @@ type FormControlPropsType = {
   const hasError = meta.touched && meta.error
 
   return (
-  <div>
+  <>
     <div className={style.formControl + " " + (hasError ? style.error: "")}>
       {children}
     </div>
     {hasError && <span className={style.errorSpan } >{meta.error}</span>}
    
-  </div>
+  </>
   )
 }
 
@@ -28,7 +28,7 @@ export function TextArea (props: any) {
 
 export function Input (props: any) {
   const {input, meta, children, ...restProps} = props
-  return <FormControl {...props}> <input {...input} {...restProps}/></FormControl>
+  return <FormControl {...props}> <input {...input} {...restProps} className={style.formInput} /></FormControl>
 }
 
 

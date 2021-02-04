@@ -7,8 +7,10 @@ import { faSearch} from "@fortawesome/free-solid-svg-icons"
 import logo from "../../assets/image/Голубой Круг Бизнес Логотип (5).png"
 import { profile } from "console"
 import userPhoto from "../../assets/image/Голубой Круг Бизнес Логотип (3).png"
+import { SearchReduxForm, SearchFormValuesType } from "../Users/SearchForm"
 
 export const Header = React.memo ((props: {login: string | null; isAuth: boolean; logout: any; profile: any}) => {
+  
     return (
     <div className={style.header}>
       <div className={style.logo}>
@@ -19,12 +21,7 @@ export const Header = React.memo ((props: {login: string | null; isAuth: boolean
       </div>
 
       <div className={style.searchBur}>
-        <form  action="" className={style.searchForm}>
-          <input type="text" placeholder={"Type here to search..."} className={style.searchInput} />
-          <a href="">
-          <FontAwesomeIcon icon={faSearch} size="1x"/> 
-          </a>
-        </form>
+       
         </div>
 
         <div className={style.loginBlock}>

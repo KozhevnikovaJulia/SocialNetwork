@@ -11,10 +11,10 @@ import style from "../../common/FormControl/FormControl.module.css"
 
 const LoginForm: React.FC<InjectedFormProps<LoginFormValuesType, LoginFormOwnPropsType> & LoginFormOwnPropsType> = ({handleSubmit, error, captchaUrl }) => {
   return (
-    <form onSubmit={handleSubmit} className={style.loginForm} >
+    <form onSubmit={handleSubmit} className={style.form} >
       <div> <Field name="email" component={Input} type="text" placeholder={"Email"} validate={[required]} /></div>
       <div><Field name="password" component={Input} type="password" placeholder={"Password"} validate={[required]} /></div>
-      <div><Field name="rememberMe" component={Input} type="checkbox" />Remember me</div>
+      <div><Field name="rememberMe" component={Input} type="checkbox" className={style.loginCheckBox}/>Remember me</div>
 
       {captchaUrl && <img src={captchaUrl} />}
       {captchaUrl &&  <div> <Field name="captcha" component={Input} type="text" placeholder={"Symbols from image"} validate={[required]} /></div>}
@@ -37,10 +37,10 @@ props.login(formData.email, formData.password, formData.rememberMe, formData.cap
   if (props.isAuth) {
     return <Redirect  to = {"/profile"}/>
   }
-  return <>
+  return <div className={style.loginBlock}>
     <h1>Login</h1>
     <LoginReduxForm onSubmit ={onSubmit} captchaUrl={props.captchaUrl}/>
-  </>
+  </div>
 }
 
 let mapStateToProps = (state: any) => {
