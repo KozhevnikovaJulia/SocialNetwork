@@ -1,0 +1,1 @@
+{"version":3,"sources":["ChatPage.module.css"],"names":[],"mappings":"AAAA,0BACI,YAAa,CACb,eACJ,CAEA,6BACI,WAAY,CACZ,UAAW,CACX,kBACJ","file":"7.a18a04cc.chunk.css","sourcesContent":[".messages {\r\n    height: 500px;\r\n    overflow-y: auto;\r\n}\r\n\r\n.message img {\r\n    height: 50px;\r\n    width: 50px;\r\n    border-radius: 50px;\r\n}"]}

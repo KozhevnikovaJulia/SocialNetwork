@@ -1,0 +1,2 @@
+(this["webpackJsonpmy-app"]=this["webpackJsonpmy-app"]||[]).push([[4],{363:function(a,t,n){},364:function(a,t,n){a.exports=n.p+"static/media/music.8b702b10.jpg"},368:function(a,t,n){"use strict";n.r(t);var e=n(0),c=n.n(e),i=n(363),s=n.n(i),m=n(85),u=n(364),p=n.n(u),o=c.a.memo((function(){var a={backgroundImage:"url(".concat(p.a,")")};return c.a.createElement("div",{className:s.a.musicContant},c.a.createElement(m.a,{mainImage:a,title:"Music"}))}));t.default=o}}]);
+//# sourceMappingURL=4.a87e07b3.chunk.js.map
