@@ -8,8 +8,8 @@ const instance = Axios.create ({
 })
 
 export const UserAPI = {
-    getUsers (currentPage: number, pageSize: number) {
-        return instance.get(`users?page=${currentPage}& count=${pageSize}`)
+    getUsers (currentPage: number, pageSize: number, term: string) {
+        return instance.get(`users?page=${currentPage}&count=${pageSize}&term=${term}`)
     },
     postUserFollow (userId: number) {
         return instance.post(`follow/` + userId, {})

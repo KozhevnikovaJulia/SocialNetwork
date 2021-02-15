@@ -1,11 +1,12 @@
 import React, {useState} from "react"
 import style from "./Paginator.module.css"
+import {FilterType} from "../../redux/UsersReducer"
 
 type PaginatorPropsType = {
     pageSize: number
     totalItemsCount: number
     currentPage: number
-    onChangePage: (pageNumber: number)=> void
+    onChangePage: (pageNumber: number, filter:FilterType)=> void
     portionSize: number
 }
 

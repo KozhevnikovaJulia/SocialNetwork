@@ -10,10 +10,10 @@ import {getUsersSuperSelector , getPageSizeSelector, getUsersTotalCountSelector,
 
 export class RightBarContainer extends React.PureComponent<PropsFromRedux> {
   componentDidMount = () => {
-      this.props.getUsers(this.props.currentPage, this.props.pageSize)       
+      this.props.getUsers(this.props.currentPage, this.props.pageSize, "")       
   }  
 onCgangePage = (pageNumber: number) => {
-  this.props.getUsers(pageNumber, this.props.pageSize)    
+  this.props.getUsers(pageNumber, this.props.pageSize, "")    
 }
 render = () => {
   return <div>

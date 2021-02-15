@@ -6,6 +6,7 @@ export enum ACTIONS_TYPE {
   SEND_MESSAGE = "socialNetwork/dialogs/SEND-MESSAGE",
   FOLLOW = "socialNetwork/users/FOLLOW",
   UNFOLLOW = "socialNetwork/users/FUNFOLLOW",
+  SET_FILTER = "socialNetwork/users/SET_FILTER",
   SETUSERS = "socialNetwork/users/FSET-USERS",
   SETCURRENTPAGE = "socialNetwork/users/FSET-CURRENT-PAGE",
   SETUSERSTOTALCOUNT = "socialNetwork/users/FSET-USERS-TOTAL-COUNT",

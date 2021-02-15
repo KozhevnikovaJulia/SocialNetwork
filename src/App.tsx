@@ -22,6 +22,7 @@ const Settings = React.lazy(() => import("./components/Settings/Settings"))
 const News = React.lazy(() => import("./components/News/News"))
 const Music = React.lazy(() => import("./components/Music/Music"))
 const Login = React.lazy(() => import("./components/Login/Login"))
+const ChatPage = React.lazy(() => import("./pages/ChatPage"))
 
 export class App extends React.PureComponent<AppPropsType> {
   componentDidMount = () => {
@@ -49,6 +50,7 @@ export class App extends React.PureComponent<AppPropsType> {
               <Route path="/settings" render={withSuspense(Settings)} />
               <Route path="/login" render={withSuspense(Login)} />
               <Route path="/news" render={withSuspense(News)} />
+              <Route path="/chat" render={withSuspense(ChatPage)} />
               <Route path="*" render={() => <div>404 NOT FOUND</div>}/>
             </Switch>
           </div>

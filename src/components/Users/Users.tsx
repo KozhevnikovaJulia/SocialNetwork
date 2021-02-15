@@ -1,6 +1,6 @@
 import React from "react"
 import style from "./Users.module.css"
-import { UserType } from "../../redux/UsersReducer"
+import { UserType, FilterType } from "../../redux/UsersReducer"
 import mainImg from "../../assets/image/houses.jpg"
 import {Paginator} from "../../common/Paginator/Paginator"
 import {User} from "./User"
@@ -12,20 +12,20 @@ type UsersPropsType = {
     pageSize: number
     usersTotalCount: number
     currentPage: number
-    onChangePage: (pageNumber: number)=> void
+    onChangePage: (pageNumber: number, filter: FilterType)=> void
     followingInProgress: Array<number>
     follow:(userId: number)=> void
     unfollow: (userId: number)=> void
+    onFilterChanged: (filter:FilterType)=> void
 }
 
-export const Users = React.memo (({users, pageSize, usersTotalCount, currentPage, onChangePage, followingInProgress, follow, unfollow}: UsersPropsType) => {     
+export const Users = React.memo (({users, pageSize, usersTotalCount, currentPage, onChangePage, followingInProgress, follow, unfollow, onFilterChanged}: UsersPropsType) => {     
    
     const mainImage= {
         backgroundImage: `url(${mainImg })`
       }
       const onSubmit = (formData:SearchFormValuesType )=> {
-        // props.search(formData.term)
-        alert (formData.term)
+          onFilterChanged({term:formData.term})
           }
     return <div>   
         <div className={style.usersContant}>
