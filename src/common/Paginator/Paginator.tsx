@@ -30,7 +30,7 @@ export const Paginator = React.memo (({totalItemsCount, pageSize, currentPage, o
         .map((p,i) => {
             const currentPageClass = currentPage === p ? style.selectedPage : "";
             return <span className={currentPageClass} key={i}
-                onClick={() => { onChangePage(p) }}>{p}</span>
+                onClick={() => { onChangePage(p, {term:""}) }}>{p}</span>
         })
         }
         { portionCount > portionNumber &&

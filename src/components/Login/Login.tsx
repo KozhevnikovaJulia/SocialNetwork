@@ -39,6 +39,10 @@ props.login(formData.email, formData.password, formData.rememberMe, formData.cap
   }
   return <div className={style.loginBlock}>
     <h1>Login</h1>
+    <div>To log in get registeredhere</div>
+    <div>or use common test account credentials:</div>
+    <div>Email: Kozhevnikova1501@yandex.ru</div>
+    <div>Password: SocialNetworkTS</div>
     <LoginReduxForm onSubmit ={onSubmit} captchaUrl={props.captchaUrl}/>
   </div>
 }
