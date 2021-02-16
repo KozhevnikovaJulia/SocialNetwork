@@ -3,8 +3,8 @@
     "main.css": "/SocialNetwork/static/css/main.601fe9df.chunk.css",
     "main.js": "/SocialNetwork/static/js/main.4e422a92.chunk.js",
     "main.js.map": "/SocialNetwork/static/js/main.4e422a92.chunk.js.map",
-    "runtime-main.js": "/SocialNetwork/static/js/runtime-main.83058748.js",
-    "runtime-main.js.map": "/SocialNetwork/static/js/runtime-main.83058748.js.map",
+    "runtime-main.js": "/SocialNetwork/static/js/runtime-main.c228f05a.js",
+    "runtime-main.js.map": "/SocialNetwork/static/js/runtime-main.c228f05a.js.map",
     "static/js/2.8eb70b47.chunk.js": "/SocialNetwork/static/js/2.8eb70b47.chunk.js",
     "static/js/2.8eb70b47.chunk.js.map": "/SocialNetwork/static/js/2.8eb70b47.chunk.js.map",
     "static/css/3.db2a8831.chunk.css": "/SocialNetwork/static/css/3.db2a8831.chunk.css",
@@ -22,10 +22,10 @@
     "static/css/7.a18a04cc.chunk.css": "/SocialNetwork/static/css/7.a18a04cc.chunk.css",
     "static/js/7.60417584.chunk.js": "/SocialNetwork/static/js/7.60417584.chunk.js",
     "static/js/7.60417584.chunk.js.map": "/SocialNetwork/static/js/7.60417584.chunk.js.map",
-    "static/js/8.dd5797f3.chunk.js": "/SocialNetwork/static/js/8.dd5797f3.chunk.js",
-    "static/js/8.dd5797f3.chunk.js.map": "/SocialNetwork/static/js/8.dd5797f3.chunk.js.map",
+    "static/js/8.be80d219.chunk.js": "/SocialNetwork/static/js/8.be80d219.chunk.js",
+    "static/js/8.be80d219.chunk.js.map": "/SocialNetwork/static/js/8.be80d219.chunk.js.map",
     "index.html": "/SocialNetwork/index.html",
-    "precache-manifest.5b9c76db88835cee6d575873de088235.js": "/SocialNetwork/precache-manifest.5b9c76db88835cee6d575873de088235.js",
+    "precache-manifest.5b95b67a3404af627f52f5e92be84226.js": "/SocialNetwork/precache-manifest.5b95b67a3404af627f52f5e92be84226.js",
     "service-worker.js": "/SocialNetwork/service-worker.js",
     "static/css/3.db2a8831.chunk.css.map": "/SocialNetwork/static/css/3.db2a8831.chunk.css.map",
     "static/css/4.2b283795.chunk.css.map": "/SocialNetwork/static/css/4.2b283795.chunk.css.map",
@@ -46,7 +46,7 @@
     "static/media/Голубой Круг Бизнес Логотип (5).png": "/SocialNetwork/static/media/Голубой Круг Бизнес Логотип (5).f26c1188.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.83058748.js",
+    "static/js/runtime-main.c228f05a.js",
     "static/js/2.8eb70b47.chunk.js",
     "static/css/main.601fe9df.chunk.css",
     "static/js/main.4e422a92.chunk.js"
